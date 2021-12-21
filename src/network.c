@@ -101,7 +101,7 @@ JE_boolean yourInGameMenuRequest, inGameMenuRequest;
 #ifdef WITH_NETWORK
 static void packet_copy( UDPpacket *dst, UDPpacket *src )
 {
-	void *temp = dst->data;
+	Uint8 *temp = dst->data;
 	memcpy(dst, src, sizeof(*dst));
 	dst->data = temp;
 	memcpy(dst->data, src->data, src->len);
