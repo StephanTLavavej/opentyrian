@@ -1,0 +1,10 @@
+{
+    "files.exclude": {
+        "data": true,
+        "out": true,
+        "vcpkg": true
+    },
+    "files.insertFinalNewline": false,
+    "files.trimFinalNewlines": false,
+    "files.trimTrailingWhitespace": false,
+}
