@@ -1961,7 +1961,7 @@ void JE_drawMenuChoices( void )
 			tempY -= 16;
 		}
 
-		str = malloc(strlen(menuInt[curMenu + 1][x-1])+2);
+		str = (char *)malloc(strlen(menuInt[curMenu + 1][x-1])+2);
 		if (curSel[curMenu] == x)
 		{
 			str[0] = '~';
@@ -2216,7 +2216,7 @@ void JE_scaleBitmap( SDL_Surface *dst_bitmap, const SDL_Surface *src_bitmap,  in
 
 
 	//Okay, it's time to loop through and add bits of A to a rectangle in B
-	Uint8 *dst = dst_bitmap->pixels;  /* 8-bit specific */
+	Uint8 *dst = (Uint8 *)dst_bitmap->pixels;  /* 8-bit specific */
 	const Uint8 *src, *src_w;  /* 8-bit specific */
 
 	dst += y1 * dst_bitmap->pitch + x1;
@@ -3058,8 +3058,8 @@ void JE_drawShipSpecs( SDL_Surface * screen, SDL_Surface * temp_screen  )
 	 * We can't work in place.  In fact we'll need to overlay the result
 	 * To avoid our temp screen dependence this has been rewritten to
 	 * only write one line at a time.*/
-	dst = screen->pixels;
-	src = temp_screen->pixels;
+	dst = (Uint8 *)screen->pixels;
+	src = (Uint8 *)temp_screen->pixels;
 	for (int y = 0; y < screen->h; y++)
 	{
 		for (int x = 0; x < screen->pitch; x++)

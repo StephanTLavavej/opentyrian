@@ -319,8 +319,8 @@ int JE_playRunSkipDump( Uint8 *incomingBuffer, unsigned int IncomingBufferLength
 	#define ANI_LONG_RLE   0x4000
 	#define ANI_STOP       0x0000
 
-	SZ_Init(pBuffer_IN,  incomingBuffer,    IncomingBufferLength);
-	SZ_Init(pBuffer_OUT, VGAScreen->pixels, VGAScreen->h * VGAScreen->pitch);
+	SZ_Init(pBuffer_IN,  incomingBuffer,             IncomingBufferLength);
+	SZ_Init(pBuffer_OUT, (Uint8 *)VGAScreen->pixels, VGAScreen->h * VGAScreen->pitch);
 
 
 	/* 320x200 is the only supported format.

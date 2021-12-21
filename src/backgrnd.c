@@ -45,7 +45,7 @@ JE_byte     smoothie_data[9]; /* [1..9] */
 
 void JE_darkenBackground( JE_word neat_detail )  /* wild detail level */
 {
-	Uint8 *s = VGAScreen->pixels; /* screen pointer, 8-bit specific */
+	Uint8 *s = (Uint8 *)VGAScreen->pixels; /* screen pointer, 8-bit specific */
 	int x, y;
 	
 	s += 24;
@@ -279,7 +279,7 @@ void JE_filterScreen( JE_shortint col, JE_shortint int_)
 	
 	if (col != -99 && filtrationAvail)
 	{
-		s = VGAScreen->pixels;
+		s = (Uint8 *)VGAScreen->pixels;
 		s += 24;
 		
 		col <<= 4;
@@ -297,7 +297,7 @@ void JE_filterScreen( JE_shortint col, JE_shortint int_)
 	
 	if (int_ != -99 && explosionTransparent)
 	{
-		s = VGAScreen->pixels;
+		s = (Uint8 *)VGAScreen->pixels;
 		s += 24;
 		
 		for (y = 184; y; y--)
@@ -418,8 +418,8 @@ void iced_blur_filter( SDL_Surface *dst, SDL_Surface *src )
 {
 	assert(src->format->BitsPerPixel == 8 && dst->format->BitsPerPixel == 8);
 	
-	Uint8 *dst_pixel = dst->pixels;
-	const Uint8 *src_pixel = src->pixels;
+	Uint8 *dst_pixel = (Uint8 *)dst->pixels;
+	const Uint8 *src_pixel = (const Uint8 *)src->pixels;
 	
 	for (int y = 0; y < 184; ++y)
 	{
@@ -444,8 +444,8 @@ void blur_filter( SDL_Surface *dst, SDL_Surface *src )
 {
 	assert(src->format->BitsPerPixel == 8 && dst->format->BitsPerPixel == 8);
 	
-	Uint8 *dst_pixel = dst->pixels;
-	const Uint8 *src_pixel = src->pixels;
+	Uint8 *dst_pixel = (Uint8 *)dst->pixels;
+	const Uint8 *src_pixel = (const Uint8 *)src->pixels;
 	
 	for (int y = 0; y < 184; ++y)
 	{

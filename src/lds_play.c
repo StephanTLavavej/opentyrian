@@ -108,7 +108,7 @@ bool lds_load( FILE *f, unsigned int music_offset, unsigned int music_size )
 	fread_u16_die(&numpatch, 1, f);
 
 	free(soundbank);
-	soundbank = malloc(sizeof(SoundBank) * numpatch);
+	soundbank = (SoundBank *)malloc(sizeof(SoundBank) * numpatch);
 
 	for (unsigned int i = 0; i < numpatch; i++)
 	{
@@ -151,7 +151,7 @@ bool lds_load( FILE *f, unsigned int music_offset, unsigned int music_size )
 	fread_u16_die(&numposi, 1, f);
 	
 	free(positions);
-	positions = malloc(sizeof(Position) * 9 * numposi);
+	positions = (Position *)malloc(sizeof(Position) * 9 * numposi);
 	
 	for (unsigned int i = 0; i < numposi; i++)
 	{
@@ -175,7 +175,7 @@ bool lds_load( FILE *f, unsigned int music_offset, unsigned int music_size )
 	size_t numpatterns = remaining / 2;
 
 	free(patterns);
-	patterns = malloc(sizeof(Uint16) * numpatterns);
+	patterns = (Uint16 *)malloc(sizeof(Uint16) * numpatterns);
 
 	fread_u16_die(patterns, numpatterns, f);
 	

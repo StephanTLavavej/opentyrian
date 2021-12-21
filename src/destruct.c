@@ -542,16 +542,16 @@ void JE_destructGame( void )
 	load_destruct_config(&opentyrian_config);
 
 	//malloc things that have customizable sizes
-	shotRec  = malloc(sizeof(struct destruct_shot_s)  * config.max_shots);
-	exploRec = malloc(sizeof(struct destruct_explo_s) * config.max_explosions);
-	world.mapWalls = malloc(sizeof(struct destruct_wall_s) * config.max_walls);
+	shotRec  = (struct destruct_shot_s *)malloc(sizeof(struct destruct_shot_s)  * config.max_shots);
+	exploRec = (struct destruct_explo_s *)malloc(sizeof(struct destruct_explo_s) * config.max_explosions);
+	world.mapWalls = (struct destruct_wall_s *)malloc(sizeof(struct destruct_wall_s) * config.max_walls);
 
 	//Malloc enough structures to cover all of this session's possible needs.
 	for(i = 0; i < 10; i++) {
 		config.max_installations = MAX(config.max_installations, basetypes[i][0]);
 	}
-	destruct_player[PLAYER_LEFT ].unit = malloc(sizeof(struct destruct_unit_s) * config.max_installations);
-	destruct_player[PLAYER_RIGHT].unit = malloc(sizeof(struct destruct_unit_s) * config.max_installations);
+	destruct_player[PLAYER_LEFT ].unit = (struct destruct_unit_s *)malloc(sizeof(struct destruct_unit_s) * config.max_installations);
+	destruct_player[PLAYER_RIGHT].unit = (struct destruct_unit_s *)malloc(sizeof(struct destruct_unit_s) * config.max_installations);
 
 	destructTempScreen = game_screen;
 	world.VGAScreen = VGAScreen;
@@ -1040,7 +1040,7 @@ static void JE_aliasDirt( SDL_Surface * screen )
 
 	/* This is a pointer to a screen.  If you don't like pointer arithmetic,
 	 * you won't like this function. */
-	Uint8 *s = screen->pixels;
+	Uint8 *s = (Uint8 *)screen->pixels;
 	s += 12 * screen->pitch;
 
 	for (y = 12; y < (unsigned int)screen->h; y++) {
@@ -1088,7 +1088,7 @@ static bool JE_stabilityCheck( unsigned int x, unsigned int y )
 
 
 	numDirtPixels = 0;
-	s = destructTempScreen->pixels;
+	s = (Uint8 *)destructTempScreen->pixels;
 	s += x + (y * destructTempScreen->pitch) - 1;
 
 	/* Check the 12 pixels on the bottom border of our object */
@@ -1106,10 +1106,10 @@ static bool JE_stabilityCheck( unsigned int x, unsigned int y )
 
 static void JE_tempScreenChecking( void ) /*and copy to vgascreen*/
 {
-	Uint8 *s = VGAScreen->pixels;
+	Uint8 *s = (Uint8 *)VGAScreen->pixels;
 	s += 12 * VGAScreen->pitch;
 
-	Uint8 *temps = destructTempScreen->pixels;
+	Uint8 *temps = (Uint8 *)destructTempScreen->pixels;
 	temps += 12 * destructTempScreen->pitch;
 
 	for (int y = 12; y < VGAScreen->h; y++)
@@ -1231,7 +1231,7 @@ static void JE_superPixel( unsigned int tempPosX, unsigned int tempPosY )
 	maxY = destructTempScreen->h;
 
 	rowLen = destructTempScreen->pitch;
-	s = destructTempScreen->pixels;
+	s = (Uint8 *)destructTempScreen->pixels;
 	s += (rowLen * (tempPosY - 2)) + (tempPosX - 2);
 
 	for (y = 0; y < 5; y++, s += rowLen - 5)

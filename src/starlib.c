@@ -77,7 +77,7 @@ void JE_starlib_main( void )
 	for(stars = star, i = starlib_MAX_STARS; i > 0; stars++, i--)
 	{
 		/* Make a pointer to the screen... */
-		surf = VGAScreen->pixels;
+		surf = (Uint8 *)VGAScreen->pixels;
 
 		/* Calculate the offset to where we wish to draw */
 		off = (stars->lastX)+(stars->lastY)*320;

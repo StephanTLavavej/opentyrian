@@ -651,7 +651,7 @@ connect_again:
 		episodes >>= 1;
 	}
 
-	network_opponent_name = malloc(packet_in[0]->len - 12 + 1);
+	network_opponent_name = (char *)malloc(packet_in[0]->len - 12 + 1);
 	strcpy(network_opponent_name, (char *)&packet_in[0]->data[12]);
 
 	network_update();

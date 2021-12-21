@@ -179,7 +179,7 @@ inline bool diff(unsigned int w1, unsigned int w2)
 
 void hq2x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture )
 {
-	Uint8 *src = src_surface->pixels, *src_temp;
+	Uint8 *src = (Uint8 *)src_surface->pixels, *src_temp;
 	Uint8 *dst, *dst_temp;
 
 	int src_pitch = src_surface->pitch;
@@ -191,7 +191,7 @@ void hq2x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture )
 
 	void* tmp_ptr;
 	SDL_LockTexture(dst_texture, NULL, &tmp_ptr, &dst_pitch);
-	dst = tmp_ptr;
+	dst = (Uint8 *)tmp_ptr;
 
 	int prevline, nextline;
 	
@@ -2979,7 +2979,7 @@ void hq2x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture )
 
 void hq3x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture )
 {
-	Uint8 *src = src_surface->pixels, *src_temp;
+	Uint8 *src = (Uint8 *)src_surface->pixels, *src_temp;
 	Uint8 *dst, *dst_temp;
 
 	int src_pitch = src_surface->pitch;
@@ -2991,7 +2991,7 @@ void hq3x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture )
 
 	void* tmp_ptr;
 	SDL_LockTexture(dst_texture, NULL, &tmp_ptr, &dst_pitch);
-	dst = tmp_ptr;
+	dst = (Uint8 *)tmp_ptr;
 	
 	int prevline, nextline;
 	
@@ -6839,7 +6839,7 @@ void hq3x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture )
 
 void hq4x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture )
 {
-	Uint8 *src = src_surface->pixels, *src_temp;
+	Uint8 *src = (Uint8 *)src_surface->pixels, *src_temp;
 	Uint8 *dst, *dst_temp;
 
 	int src_pitch = src_surface->pitch;
@@ -6851,7 +6851,7 @@ void hq4x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture )
 
 	void* tmp_ptr;
 	SDL_LockTexture(dst_texture, NULL, &tmp_ptr, &dst_pitch);
-	dst = tmp_ptr;
+	dst = (Uint8 *)tmp_ptr;
 	
 	int prevline, nextline;
 	

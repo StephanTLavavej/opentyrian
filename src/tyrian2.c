@@ -82,9 +82,9 @@ void JE_starShowVGA( void )
 	if (!playerEndLevel && !skipStarShowVGA)
 	{
 
-		s = VGAScreenSeg->pixels;
+		s = (Uint8 *)VGAScreenSeg->pixels;
 
-		src = game_screen->pixels;
+		src = (JE_byte *)game_screen->pixels;
 		src += 24;
 
 		if (smoothScroll != 0 /*&& thisPlayerNum != 2*/)
@@ -2779,8 +2779,8 @@ new_game:
 							{
 								if (!newkey)
 								{
-									vga = VGAScreen->pixels;
-									vga2 = VGAScreen2->pixels;
+									vga = (Uint8 *)VGAScreen->pixels;
+									vga2 = (Uint8 *)VGAScreen2->pixels;
 									pic = pic_buffer + (199 - z) * 320;
 
 									setjasondelay(1); /* attempting to emulate JE_waitRetrace();*/
@@ -2830,8 +2830,8 @@ new_game:
 							{
 								if (!newkey)
 								{
-									vga = VGAScreen->pixels;
-									vga2 = VGAScreen2->pixels;
+									vga = (Uint8 *)VGAScreen->pixels;
+									vga2 = (Uint8 *)VGAScreen2->pixels;
 									pic = pic_buffer;
 
 									setjasondelay(1); /* attempting to emulate JE_waitRetrace();*/
@@ -2882,8 +2882,8 @@ new_game:
 							{
 								if (!newkey)
 								{
-									vga = VGAScreen->pixels;
-									vga2 = VGAScreen2->pixels;
+									vga = (Uint8 *)VGAScreen->pixels;
+									vga2 = (Uint8 *)VGAScreen2->pixels;
 									pic = pic_buffer;
 
 									setjasondelay(1); /* attempting to emulate JE_waitRetrace();*/
@@ -5133,8 +5133,8 @@ void JE_whoa( void )
 	 * way to get vgascreen as one of the temp buffers), but it's only called
 	 * once so don't worry about it. */
 
-	TempScreen1  = game_screen->pixels;
-	TempScreen2  = VGAScreen2->pixels;
+	TempScreen1  = (Uint8 *)game_screen->pixels;
+	TempScreen2  = (Uint8 *)VGAScreen2->pixels;
 
 	screenSize   = VGAScreenSeg->h * VGAScreenSeg->pitch;
 	topBorder    = VGAScreenSeg->pitch * 4; /* Seems an arbitrary number of lines */
