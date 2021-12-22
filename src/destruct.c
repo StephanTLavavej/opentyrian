@@ -2258,7 +2258,7 @@ static void DE_RunTickGetInput( void )
 			{
 				key = destruct_player[player_index].keys.Config[key_index][slot_index];
 				if(key == SDL_SCANCODE_UNKNOWN) { break; }
-				if(keysactive[key] == true)
+				if(keysactive[key])
 				{
 					/* The right key was clearly pressed */
 					destruct_player[player_index].moves.actions[key_index] = true;
