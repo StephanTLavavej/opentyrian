@@ -3681,7 +3681,7 @@ redo:
 
 						if (new_input)
 						{
-							Uint8 temp2[2] = { demo_keys_wait >> 8, demo_keys_wait };
+							Uint8 temp2[2] = { (Uint8)(demo_keys_wait >> 8), (Uint8)demo_keys_wait };
 							fwrite_u8(temp2, 2, demo_file);
 
 							demo_keys = 0;

@@ -185,7 +185,7 @@ void JE_HBox( SDL_Surface *screen, int x, int y, unsigned int  messagenum, unsig
 
 void JE_loadHelpText( void )
 {
-	const unsigned int menuInt_entries[MENU_MAX + 1] = { -1, 7, 9, 8, -1, -1, 11, -1, -1, -1, 6, 4, 6, 7, 5 };
+	const unsigned int menuInt_entries[MENU_MAX + 1] = { (unsigned int)-1, 7, 9, 8, (unsigned int)-1, (unsigned int)-1, 11, (unsigned int)-1, (unsigned int)-1, (unsigned int)-1, 6, 4, 6, 7, 5 };
 	
 	FILE *f = dir_fopen_die(data_dir(), "tyrian.hdt", "rb");
 	fread_s32_die(&episode1DataLoc, 1, f);

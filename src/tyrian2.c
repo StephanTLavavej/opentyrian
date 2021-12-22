@@ -4317,10 +4317,10 @@ void JE_eventSystem( void )
 		{
 			const Uint8 newEnemyShapeTables[] =
 			{
-				eventRec[eventLoc-1].eventdat > 0 ? eventRec[eventLoc-1].eventdat : 0,
-				eventRec[eventLoc-1].eventdat2 > 0 ? eventRec[eventLoc-1].eventdat2 : 0,
-				eventRec[eventLoc-1].eventdat3 > 0 ? eventRec[eventLoc-1].eventdat3 : 0,
-				eventRec[eventLoc-1].eventdat4 > 0 ? eventRec[eventLoc-1].eventdat4 : 0,
+				(Uint8)(eventRec[eventLoc-1].eventdat > 0 ? eventRec[eventLoc-1].eventdat : 0),
+				(Uint8)(eventRec[eventLoc-1].eventdat2 > 0 ? eventRec[eventLoc-1].eventdat2 : 0),
+				(Uint8)(eventRec[eventLoc-1].eventdat3 > 0 ? eventRec[eventLoc-1].eventdat3 : 0),
+				(Uint8)(eventRec[eventLoc-1].eventdat4 > 0 ? eventRec[eventLoc-1].eventdat4 : 0),
 			};
 			
 			for (unsigned int i = 0; i < COUNTOF(newEnemyShapeTables); ++i)

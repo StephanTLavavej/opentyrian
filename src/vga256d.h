@@ -34,7 +34,7 @@ void JE_barBright( SDL_Surface *surface, int a, int b, int c, int d );
 
 static inline void fill_rectangle_wh( SDL_Surface *surface, int x, int y, uint w, uint h, Uint8 color )
 {
-	SDL_Rect rect = { x, y, w, h };
+	SDL_Rect rect = { x, y, (int)w, (int)h };
 	SDL_FillRect(surface, &rect, color);
 }
 
