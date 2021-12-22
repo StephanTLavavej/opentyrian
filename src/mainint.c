@@ -3673,7 +3673,7 @@ redo:
 						for (unsigned int i = 0; i < 8; i++)
 						{
 							bool temp = demo_keys & (1 << i);
-							if (temp != keysactive[keySettings[i]])
+							if (temp != (bool)keysactive[keySettings[i]])
 								new_input = true;
 						}
 
@@ -3740,7 +3740,7 @@ redo:
 				for (int i = 4 - 1; i >= 0; i--)
 				{
 					buttons <<= 1;
-					buttons |= button[i];
+					buttons |= (Uint16)button[i];
 				}
 
 				SDLNet_Write16(this_player->x - *mouseX_, &packet_state_out[0]->data[4]);
