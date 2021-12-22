@@ -57,7 +57,7 @@ typedef struct
 	JE_word cost;
 	JE_word itemgraphic;
 	JE_word poweruse;
-} JE_WeaponPortType[PORT_NUM + 1]; /* [0..portnum] */
+} JE_WeaponPortType;
 
 typedef struct
 {
@@ -66,7 +66,7 @@ typedef struct
 	JE_byte     power;
 	JE_shortint speed;
 	JE_word     cost;
-} JE_PowerType[POWER_NUM + 1]; /* [0..powernum] */
+} JE_PowerType;
 
 typedef struct
 {
@@ -75,7 +75,7 @@ typedef struct
 	JE_byte pwr;
 	JE_byte stype;
 	JE_word wpn;
-} JE_SpecialType[SPECIAL_NUM + 1]; /* [0..specialnum] */
+} JE_SpecialType;
 
 typedef struct
 {
@@ -101,7 +101,7 @@ typedef struct
 	JE_byte mpwr;
 	JE_word itemgraphic;
 	JE_word cost;
-} JE_ShieldType[SHIELD_NUM + 1]; /* [0..shieldnum] */
+} JE_ShieldType;
 
 typedef struct
 {
@@ -113,7 +113,7 @@ typedef struct
 	JE_byte     dmg;
 	JE_word     cost;
 	JE_byte     bigshipgraphic;
-} JE_ShipType[SHIP_NUM + 1]; /* [0..shipnum] */
+} JE_ShipType;
 
 /* EnemyData */
 typedef struct
@@ -145,16 +145,16 @@ typedef struct
 	JE_word     elaunchtype;
 	JE_integer  value;
 	JE_word     eenemydie;
-} JE_EnemyDatType[ENEMY_NUM + 1]; /* [0..enemynum] */
+} JE_EnemyDatType;
 
-extern JE_WeaponPortType weaponPort;
+extern JE_WeaponPortType weaponPort[PORT_NUM + 1]; /* [0..portnum] */
 extern JE_WeaponType weapons[WEAP_NUM + 1]; /* [0..weapnum] */
-extern JE_PowerType powerSys;
-extern JE_ShipType ships;
+extern JE_PowerType powerSys[POWER_NUM + 1]; /* [0..powernum] */
+extern JE_ShipType ships[SHIP_NUM + 1]; /* [0..shipnum] */
 extern JE_OptionType options[OPTION_NUM + 1]; /* [0..optionnum] */
-extern JE_ShieldType shields;
-extern JE_SpecialType special;
-extern JE_EnemyDatType enemyDat;
+extern JE_ShieldType shields[SHIELD_NUM + 1]; /* [0..shieldnum] */
+extern JE_SpecialType special[SPECIAL_NUM + 1]; /* [0..specialnum] */
+extern JE_EnemyDatType enemyDat[ENEMY_NUM + 1]; /* [0..enemynum] */
 extern JE_byte initial_episode_num, episodeNum;
 extern JE_boolean episodeAvail[EPISODE_MAX];
 
