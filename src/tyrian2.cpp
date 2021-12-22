@@ -75,7 +75,7 @@ JE_byte itemAvailMax[9]; /* [1..9] */
 
 void JE_starShowVGA( void )
 {
-	JE_byte *src;
+	const JE_byte *src;
 	Uint8 *s = NULL; /* screen pointer, 8-bit specific */
 
 	int x, y, lightx, lighty, lightdist;
@@ -85,7 +85,7 @@ void JE_starShowVGA( void )
 
 		s = (Uint8 *)VGAScreenSeg->pixels;
 
-		src = (JE_byte *)game_screen->pixels;
+		src = (const JE_byte *)game_screen->pixels;
 		src += 24;
 
 		if (smoothScroll != 0 /*&& thisPlayerNum != 2*/)

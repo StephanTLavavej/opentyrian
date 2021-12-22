@@ -2994,7 +2994,8 @@ void JE_drawShipSpecs( SDL_Surface * screen, SDL_Surface * temp_screen  )
 	 * but it'll be okay (and the alternative is malloc/a large stack) */
 
 	int temp_x = 0, temp_y = 0, temp_index;
-	Uint8 *src, *dst;
+	const Uint8 *src;
+	Uint8 *dst;
 
 
 	//first, draw the text and other assorted flavoring.
@@ -3061,7 +3062,7 @@ void JE_drawShipSpecs( SDL_Surface * screen, SDL_Surface * temp_screen  )
 	 * To avoid our temp screen dependence this has been rewritten to
 	 * only write one line at a time.*/
 	dst = (Uint8 *)screen->pixels;
-	src = (Uint8 *)temp_screen->pixels;
+	src = (const Uint8 *)temp_screen->pixels;
 	for (int y = 0; y < screen->h; y++)
 	{
 		for (int x = 0; x < screen->pitch; x++)
