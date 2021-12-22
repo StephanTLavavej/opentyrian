@@ -146,7 +146,7 @@ void openTyrianMenu( void )
 				{ MENU_ITEM_JUKEBOX, "Jukebox", "Listen to the music of Tyrian." },
 				// { MENU_ITEM_DESTRUCT, "Destruct", "Play a bonus mini-game." },
 				{ MENU_ITEM_DONE, "Done", "Return to the main menu." },
-				{ -1 }
+				{ (MenuItemId)-1 }
 			},
 		},
 		[MENU_GRAPHICS] = {
@@ -156,7 +156,7 @@ void openTyrianMenu( void )
 				{ MENU_ITEM_SCALER, "Scaler:", "Change the pixel art scaling algorithm.", getScalerPickerItemsCount, getScalerPickerItem },
 				{ MENU_ITEM_SCALING_MODE, "Scaling Mode:", "Change the scaling mode.", getScalingModePickerItemsCount, getScalingModePickerItem },
 				{ MENU_ITEM_DONE, "Done", "Return to the previous menu." },
-				{ -1 }
+				{ (MenuItemId)-1 }
 			},
 		},
 		[MENU_SOUND] = {
@@ -165,7 +165,7 @@ void openTyrianMenu( void )
 				{ MENU_ITEM_MUSIC_VOLUME, "Music Volume", "Change volume with the left/right arrow keys." },
 				{ MENU_ITEM_EFFECTS_VOLUME, "Effects Volume", "Change volume with the left/right arrow keys." },
 				{ MENU_ITEM_DONE, "Done", "Return to the previous menu." },
-				{ -1 }
+				{ (MenuItemId)-1 }
 			},
 		},
 	};
@@ -736,7 +736,7 @@ void openTyrianMenu( void )
 				}
 				case MENU_ITEM_SCALING_MODE:
 				{
-					scaling_mode = pickerSelectedIndex;
+					scaling_mode = (ScalingMode)pickerSelectedIndex;
 					break;
 				}
 				default:

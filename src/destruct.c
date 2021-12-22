@@ -698,7 +698,7 @@ static enum de_mode_t JE_modeSelect( void )
 				{
 					mode = MODE_LAST;
 				} else {
-					mode = MODE_LAST-1;
+					mode = (enum de_mode_t)(MODE_LAST-1);
 				}
 			} else {
 				mode--;
@@ -864,7 +864,7 @@ static void DE_generateUnits( unsigned int * baseWorld )
 			}
 
 			destruct_player[i].unit[j].unitY = JE_placementPosition(destruct_player[i].unit[j].unitX - 1, 14, baseWorld);
-			destruct_player[i].unit[j].unitType = basetypes[baseLookup[i][world.destructMode]][(mt_rand() % 10) + 1];
+			destruct_player[i].unit[j].unitType = (enum de_unit_t)basetypes[baseLookup[i][world.destructMode]][(mt_rand() % 10) + 1];
 
 			/* Sats are special cases since they are useless.  They don't count
 			 * as active units and we can't have a team of all sats */
@@ -1575,7 +1575,7 @@ static void DE_RunTickGravity( void )
 			}
 
 		/* Draw the unit. */
-		DE_GravityDrawUnit(i, unit);
+		DE_GravityDrawUnit((enum de_player_t)i, unit);
 		}
 	}
 }
@@ -1770,7 +1770,7 @@ static void DE_TestExplosionCollision( unsigned int PosX, unsigned int PosY)
 				unit->health--;
 				if (unit->health <= 0)
 				{
-					DE_DestroyUnit(i, unit);
+					DE_DestroyUnit((enum de_player_t)i, unit);
 				}
 			}
 		}
@@ -2401,12 +2401,12 @@ static void DE_ProcessInput( void )
 					break;
 
 				case EXPL_MAGNET:
-					DE_RunMagnet(player_index, curUnit);
+					DE_RunMagnet((enum de_player_t)player_index, curUnit);
 					break;
 
 				case EXPL_DIRT:
 				case EXPL_NORMAL:
-					DE_MakeShot(player_index, curUnit, direction);
+					DE_MakeShot((enum de_player_t)player_index, curUnit, direction);
 					break;
 
 				default:
