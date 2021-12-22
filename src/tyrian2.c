@@ -384,10 +384,12 @@ enemy_still_exists:
 								JE_setupExplosion(tempX + 4 + tempMapXOfs, tempY - 20 - backMove * 8, -2, 6, false, false);
 							}
 							break;
-						case 251:; /* Suck-O-Magnet */
+						case 251: /* Suck-O-Magnet */
+						{
 							const int attractivity = 4 - (abs(player[0].x - tempX) + abs(player[0].y - tempY)) / 100;
 							player[0].x_velocity += (player[0].x > tempX) ? -attractivity : attractivity;
 							break;
+						}
 						case 253: /* Left ShortRange Magnet */
 							if (abs(player[0].x + 25 - 14 - tempX) < 24 && abs(player[0].y - tempY) < 28)
 							{
@@ -4744,6 +4746,7 @@ void JE_eventSystem( void )
 		break;
 
 	case 38:
+	{
 		curLoc = eventRec[eventLoc-1].eventdat;
 		int new_event_loc = 1;
 		for (tempW = 0; tempW < maxEvent; tempW++)
@@ -4755,6 +4758,7 @@ void JE_eventSystem( void )
 		}
 		eventLoc = new_event_loc;
 		break;
+	}
 
 	case 39: /* Enemy Global Linknum Change */
 		for (temp = 0; temp < 100; temp++)
@@ -5026,7 +5030,8 @@ void JE_eventSystem( void )
 		}
 		break;
 
-	case 75:;
+	case 75:
+	{
 		bool temp_no_clue = false; // TODO: figure out what this is doing
 
 		for (temp = 0; temp < 100; temp++)
@@ -5062,6 +5067,7 @@ void JE_eventSystem( void )
 		}
 
 		break;
+	}
 
 	case 76:
 		returnActive = true;

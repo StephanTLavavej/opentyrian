@@ -2804,6 +2804,7 @@ void JE_menuFunction( JE_byte select )
 			break;
 		case 3:
 		case 4:
+		{
 			JE_playSampleNum(S_CURSOR);
 
 			int temp = curSel[curMenu] - 3;
@@ -2820,6 +2821,7 @@ void JE_menuFunction( JE_byte select )
 				}
 			} while (inputDevice[temp] == inputDevice[temp == 0 ? 1 : 0]);
 			break;
+		}
 		case 5:
 			curMenu = MENU_OPTIONS;
 			break;

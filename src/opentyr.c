@@ -242,7 +242,8 @@ void openTyrianMenu( void )
 
 			switch (menuItem->id)
 			{
-			case MENU_ITEM_DISPLAY:;
+			case MENU_ITEM_DISPLAY:
+			{
 				const char *value = "Window";
 				if (fullscreen_display >= 0)
 				{
@@ -252,6 +253,7 @@ void openTyrianMenu( void )
 
 				draw_font_hv_shadow(VGAScreen, xMenuItemValue, y, value, normal_font, left_aligned, 15, -3 + (selected ? 2 : 0) + (disabled ? -4 : 0), false, 2);
 				break;
+			}
 
 			case MENU_ITEM_SCALER:
 				draw_font_hv_shadow(VGAScreen, xMenuItemValue, y, scalers[scaler].name, normal_font, left_aligned, 15, -3 + (selected ? 2 : 0) + (disabled ? -4 : 0), false, 2);

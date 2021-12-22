@@ -661,6 +661,7 @@ static bool parse_quote_field( char *buffer, size_t *index, size_t *length )
 					buffer[o++] = '\\';
 					break;
 				case 'x':
+				{
 					/* parse two hex digits */
 					c = buffer[++i];
 					char m = (c >= '0' && c <= '9') ? '0' :
@@ -677,6 +678,7 @@ static bool parse_quote_field( char *buffer, size_t *index, size_t *length )
 						return false;
 					buffer[o++] = (h << 4) | (c - m);
 					break;
+				}
 				default:
 					return false;
 				}

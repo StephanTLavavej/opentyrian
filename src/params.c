@@ -122,6 +122,7 @@ void JE_paramCheck( int argc, char *argv[] )
 			break;
 			
 		case 'n':
+		{
 			isNetworkGame = true;
 			
 			intptr_t temp = (intptr_t)strchr(option.arg, ':');
@@ -147,6 +148,7 @@ void JE_paramCheck( int argc, char *argv[] )
 				strcpy(network_opponent_host, option.arg);
 			}
 			break;
+		}
 			
 		case 256: // --net-player-name
 			network_player_name = (char *)malloc(strlen(option.arg) + 1);
