@@ -293,9 +293,9 @@ static const int     shotColor[MAX_SHOT_TYPES] = {16, 16, 16, 16, 16, 16, 16, 16
 static const enum de_shot_t defaultWeapon[MAX_UNITS] = {SHOT_SMALL, SHOT_MICRO,     SHOT_SMALLDIRT, SHOT_INVALID, SHOT_MAGNET, SHOT_MINILASER, SHOT_MICRO, SHOT_MINI};
 static const enum de_shot_t defaultCpuWeapon[MAX_UNITS] = {SHOT_SMALL, SHOT_MICRO,     SHOT_DEMO,      SHOT_INVALID, SHOT_MAGNET, SHOT_MINILASER, SHOT_MICRO, SHOT_MINI};
 static const enum de_shot_t defaultCpuWeaponB[MAX_UNITS] = {SHOT_DEMO,  SHOT_SMALLNUKE, SHOT_DEMO,      SHOT_INVALID, SHOT_MAGNET, SHOT_MEGALASER, SHOT_MICRO, SHOT_MINI};
-static const int       systemAngle[MAX_UNITS] = {true, true, true, false, false, true, false, false};
+static const bool      systemAngle[MAX_UNITS] = {true, true, true, false, false, true, false, false};
 static const int        baseDamage[MAX_UNITS] = {200, 120, 400, 300, 80, 150, 600, 40};
-static const int         systemAni[MAX_UNITS] = {false, false, false, true, false, false, false, true};
+static const bool        systemAni[MAX_UNITS] = {false, false, false, true, false, false, false, true};
 
 static bool weaponSystems[MAX_UNITS][MAX_SHOT_TYPES] =
 {
