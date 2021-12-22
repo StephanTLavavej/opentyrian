@@ -4928,7 +4928,7 @@ void JE_eventSystem( void )
 		break;
 
 	case 61:  // if specific flag set to specific value, skip events
-		if (globalFlags[eventRec[eventLoc-1].eventdat-1] == eventRec[eventLoc-1].eventdat2)
+		if ((JE_integer)globalFlags[eventRec[eventLoc-1].eventdat-1] == eventRec[eventLoc-1].eventdat2)
 			eventLoc += eventRec[eventLoc-1].eventdat3;
 		break;
 
