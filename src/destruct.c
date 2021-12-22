@@ -399,7 +399,7 @@ static const char *const unit_names[] =
 
 static enum de_unit_t get_unit_by_name( const char *unit_name )
 {
-	for (enum de_unit_t unit = UNIT_FIRST; unit < MAX_UNITS; ++unit)
+	for (enum de_unit_t unit = UNIT_FIRST; unit < MAX_UNITS; unit = (enum de_unit_t)(unit + 1))
 		if (strcmp(unit_name, unit_names[unit]) == 0)
 			return unit;
 	
@@ -701,7 +701,7 @@ static enum de_mode_t JE_modeSelect( void )
 					mode = (enum de_mode_t)(MODE_LAST-1);
 				}
 			} else {
-				mode--;
+				mode = (enum de_mode_t)(mode - 1);
 			}
 		}
 		if (keysactive[SDL_SCANCODE_DOWN])
@@ -710,12 +710,12 @@ static enum de_mode_t JE_modeSelect( void )
 			{
 				if (config.allow_custom == true && mode == MODE_LAST-1)
 				{
-					mode++;
+					mode = (enum de_mode_t)(mode + 1);
 				} else {
 					mode = MODE_FIRST;
 				}
 			} else {
-				mode++;
+				mode = (enum de_mode_t)(mode + 1);
 			}
 		}
 	}
@@ -2420,7 +2420,7 @@ static void DE_CycleWeaponUp( struct destruct_unit_s * unit )
 {
 	do
 	{
-		unit->shotType++;
+		unit->shotType = (enum de_shot_t)(unit->shotType + 1);
 		if (unit->shotType > SHOT_LAST)
 		{
 			unit->shotType = SHOT_FIRST;
@@ -2431,7 +2431,7 @@ static void DE_CycleWeaponDown( struct destruct_unit_s * unit )
 {
 	do
 	{
-		unit->shotType--;
+		unit->shotType = (enum de_shot_t)(unit->shotType - 1);
 		if (unit->shotType < SHOT_FIRST)
 		{
 			unit->shotType = SHOT_LAST;
