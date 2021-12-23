@@ -193,7 +193,7 @@ void JE_loadHelpText( void )
 	strcpy(helpTxt[4], "~Upgrade Ship~  You can configure many aspects of your ship.  Upgrade points for your ship are gained by shooting enemies and collecting various items.");
 	strcpy(helpTxt[5], "~Purchasing~  Use the up/down arrow keys to select the item you want to view.  When you purchase the item, a bar will move to show the item you have purchased.  You may then exit the menu using done or ESC.");
 	strcpy(helpTxt[6], "The amount of money you will have available after purchasing the item selected is shown at the bottom.  Items that are darkened out cost more than you can afford and you will be unable to select them.");
-	strcpy(helpTxt[7], "~Ship Type~  Each ship has a different armor rating.  Armor is your last line of protection from enemy attack and is not easily repaired in the middile of combat.");
+	strcpy(helpTxt[7], "~Ship Type~  Each ship has a different armor rating.  Armor is your last line of protection from enemy attack and is not easily repaired in the middle of combat.");
 	strcpy(helpTxt[8], "~Front Gun~/~Rear Gun~  Your ship can carry both a front and rear gun.  You can change your weapons or upgrade them from here.");
 	strcpy(helpTxt[9], "To ~upgrade~ or ~downgrade~ your existing gun, use the right and left arrow keys or click on the red arrows below your ship.  The bars in the center show you what power level your weapons are at.");
 	strcpy(helpTxt[10], "The red arrows and cost displays indicate when you can upgrade or downgrade your weapons.  If the right arrow is darkened or the cost is displayed in red, you cannot upgrade further.");
@@ -623,7 +623,7 @@ void JE_loadHelpText( void )
 	strcpy(shipInfo[0][0], "The ~USP Talon~ provides you with ~one~ ~full~ ~inch~ of armor plating and a generous full-sized generator and engine area.  With both forward and rear mounting systems and 2 cargo bays, it's just like a real ~Microsol~ fighter!");
 	strcpy(shipInfo[0][1], "The craft is especially designed for speed and maneuverability; it gives you an unparalleled 3G base thrust addition!  All this for only ~6000~ cr!!");
 	strcpy(shipInfo[1][0], "The ~SuperCarrot FoodShip 9~ is one of the most advanced edible fighters ever produced.  You can't go wrong with a ~FoodShip~!");
-	strcpy(shipInfo[1][1], "~Foodships~ are usually complemented by either the ~Hotdog Mustard-spread Technology~, or the dreaded ~SuperBanana Bombs~.");
+	strcpy(shipInfo[1][1], "~FoodShips~ are usually complemented by either the ~Hotdog Mustard-spread Technology~, or the dreaded ~SuperBanana Bombs~.");
 	strcpy(shipInfo[2][0], "The ~Gencore Phoenix~ is the main advanced ~Gencore~ ~Solo~ ~Fighter~.  It's an extremely reliable craft that can take a good deal of punishment.");
 	strcpy(shipInfo[2][1], "Standard on the ~Gencore~ ~Solo~ ~Fighter~ line is the new particle redefinition technology, which allows you to materialize extra armor on your outer hull.  Pilots are warned that the system is easily triggered and it completely drains your shields.");
 	strcpy(shipInfo[3][0], "The ~Gencore Maelstrom~ is a refined ~Phoenix~ with an additional ~2cm~ of main hull.  It also features deluxe plush seating with ~extra-wide~ ~armrests~ and ~synth-velour~ ~lining~.");
@@ -642,9 +642,9 @@ void JE_loadHelpText( void )
 	strcpy(shipInfo[9][1], "This ship isn't meant for flying around in, but with an infrared scrambler on board, it's a perfect way to sneak in behind enemy lines!");
 	strcpy(shipInfo[10][0], "No info available on Player 1.");
 	strcpy(shipInfo[10][1], "Used in Arcade Mode.");
-	strcpy(shipInfo[11][0], "~TOP SECRET:~ This ship is on loan from ~Nortaneous'~ personal hanger.  The rent on this ship is very high, but it's incredibly powerful.");
+	strcpy(shipInfo[11][0], "~TOP SECRET:~ This ship is on loan from ~Nortaneous'~ personal hangar.  The rent on this ship is very high, but it's incredibly powerful.");
 	strcpy(shipInfo[11][1], "The only way to describe what this ship does is to fly it and see for yourself.  Nothing on the screen is safe with its ~special~ ~weapon~ active.");
-	strcpy(shipInfo[12][0], "After destroying the tyrranical might of ~Vykromod~ a second time, Trent found himself locked into the future through the Stargate.  But that's another story.  Now, though, he has returned with his modified ~Stalker C~ to reclaim his past.");
+	strcpy(shipInfo[12][0], "After destroying the tyrannical might of ~Vykromod~ a second time, Trent found himself locked into the future through the Stargate.  But that's another story.  Now, though, he has returned with his modified ~Stalker C~ to reclaim his past.");
 	strcpy(shipInfo[12][1], "The ~Modified Stalker~ is equipped with an advanced molecular generator which simulates many conventional weapons.  But, it also has the power to instantly generate any one of a number of side-ships and front attachments.  It's the power of the future.");
 
 	/*Menu 12 - Network Options*/
