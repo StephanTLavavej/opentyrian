@@ -61,7 +61,7 @@ boss_bar_t boss_bar[2];
 /* Level Event Data */
 JE_boolean quit, loadLevelOk;
 
-struct JE_EventRecType eventRec[EVENT_MAXIMUM]; /* [1..eventMaximum] */
+JE_EventRecType eventRec[EVENT_MAXIMUM]; /* [1..eventMaximum] */
 JE_word levelEnemyMax;
 JE_word levelEnemyFrequency;
 JE_word levelEnemy[40]; /* [1..40] */
@@ -570,7 +570,7 @@ enemy_still_exists:
 					/*Launch Enemy Placement*/
 					if (b > 0)
 					{
-						struct JE_SingleEnemyType* e = &enemy[b-1];
+						JE_SingleEnemyType* e = &enemy[b-1];
 
 						e->ex = tempX;
 						e->ey = tempY + enemyDat[e->enemytype].startyc;
@@ -3863,7 +3863,7 @@ Sint16 JE_newEnemy( int enemyOffset, Uint16 eDatI, Sint16 uniqueShapeTableI )
 	return 0;
 }
 
-uint JE_makeEnemy( struct JE_SingleEnemyType *enemy, Uint16 eDatI, Sint16 uniqueShapeTableI )
+uint JE_makeEnemy( JE_SingleEnemyType *enemy, Uint16 eDatI, Sint16 uniqueShapeTableI )
 {
 	uint avail;
 

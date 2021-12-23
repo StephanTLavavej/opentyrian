@@ -41,7 +41,7 @@ void hq4x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture );
 
 uint scaler;
 
-const struct Scalers scalers[] =
+const Scalers scalers[] =
 {
 	{ 1 * vga_width, 1 * vga_height, nn_16,      nn_32,      "None" },
 	{ 2 * vga_width, 2 * vga_height, nn_16,      nn_32,      "2x" },

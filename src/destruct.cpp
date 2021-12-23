@@ -69,25 +69,25 @@
 #define MAX_KEY_OPTIONS 4
 
 /*** Enums ***/
-enum de_state_t { STATE_INIT, STATE_RELOAD, STATE_CONTINUE };
-enum de_player_t { PLAYER_LEFT = 0, PLAYER_RIGHT = 1, MAX_PLAYERS = 2 };
-enum de_team_t { TEAM_LEFT = 0, TEAM_RIGHT = 1, MAX_TEAMS = 2 };
-enum de_mode_t { MODE_5CARDWAR = 0, MODE_TRADITIONAL, MODE_HELIASSAULT,
+typedef enum de_state_t { STATE_INIT, STATE_RELOAD, STATE_CONTINUE } de_state_t;
+typedef enum de_player_t { PLAYER_LEFT = 0, PLAYER_RIGHT = 1, MAX_PLAYERS = 2 } de_player_t;
+typedef enum de_team_t { TEAM_LEFT = 0, TEAM_RIGHT = 1, MAX_TEAMS = 2 } de_team_t;
+typedef enum de_mode_t { MODE_5CARDWAR = 0, MODE_TRADITIONAL, MODE_HELIASSAULT,
                  MODE_HELIDEFENSE, MODE_OUTGUNNED, MODE_CUSTOM,
                  MODE_FIRST = MODE_5CARDWAR, MODE_LAST = MODE_CUSTOM,
-                 MAX_MODES = 6, MODE_NONE = -1 };
-enum de_unit_t { UNIT_TANK = 0, UNIT_NUKE, UNIT_DIRT, UNIT_SATELLITE,
+                 MAX_MODES = 6, MODE_NONE = -1 } de_mode_t;
+typedef enum de_unit_t { UNIT_TANK = 0, UNIT_NUKE, UNIT_DIRT, UNIT_SATELLITE,
                  UNIT_MAGNET, UNIT_LASER, UNIT_JUMPER, UNIT_HELI,
                  UNIT_FIRST = UNIT_TANK, UNIT_LAST = UNIT_HELI,
-                 MAX_UNITS = 8, UNIT_NONE = -1 };
-enum de_shot_t { SHOT_TRACER = 0, SHOT_SMALL, SHOT_LARGE, SHOT_MICRO,
+                 MAX_UNITS = 8, UNIT_NONE = -1 } de_unit_t;
+typedef enum de_shot_t { SHOT_TRACER = 0, SHOT_SMALL, SHOT_LARGE, SHOT_MICRO,
                  SHOT_SUPER, SHOT_DEMO, SHOT_SMALLNUKE, SHOT_LARGENUKE,
                  SHOT_SMALLDIRT, SHOT_LARGEDIRT, SHOT_MAGNET, SHOT_MINILASER,
                  SHOT_MEGALASER, SHOT_LASERTRACER, SHOT_MEGABLAST, SHOT_MINI,
                  SHOT_BOMB,
                  SHOT_FIRST = SHOT_TRACER, SHOT_LAST = SHOT_BOMB,
-                 MAX_SHOT_TYPES = 17, SHOT_INVALID = -1 };
-enum de_expl_t { EXPL_NONE, EXPL_MAGNET, EXPL_DIRT, EXPL_NORMAL }; /* this needs a better name */
+                 MAX_SHOT_TYPES = 17, SHOT_INVALID = -1 } de_shot_t;
+typedef enum de_expl_t { EXPL_NONE, EXPL_MAGNET, EXPL_DIRT, EXPL_NORMAL } de_expl_t; /* this needs a better name */
 enum de_trails_t { TRAILS_NONE, TRAILS_NORMAL, TRAILS_FULL };
 enum de_pixel_t { PIXEL_BLACK = 0, PIXEL_DIRT = 25 };
 enum de_mapflags_t { MAP_NORMAL = 0x00, MAP_WALLS = 0x01, MAP_RINGS = 0x02,
@@ -103,7 +103,7 @@ enum de_move_t { MOVE_LEFT = 0, MOVE_RIGHT, MOVE_UP, MOVE_DOWN, MOVE_CHANGE, MOV
 
 
 /*** Structs ***/
-struct destruct_config_s {
+typedef struct destruct_config_s {
 
 	unsigned int max_shots;
 	unsigned int min_walls;
@@ -114,8 +114,8 @@ struct destruct_config_s {
 	bool alwaysalias;
 	bool jumper_straight[2];
 	bool ai[2];
-};
-struct destruct_unit_s {
+} destruct_config_s;
+typedef struct destruct_unit_s {
 
 	/* Positioning/movement */
 	unsigned int unitX; /* yep, one's an int and the other is a real */
@@ -124,8 +124,8 @@ struct destruct_unit_s {
 	bool         isYInAir;
 
 	/* What it is and what it fires */
-	enum de_unit_t unitType;
-	enum de_shot_t shotType;
+	de_unit_t unitType;
+	de_shot_t shotType;
 
 	/* What it's pointed */
 	float angle;
@@ -135,8 +135,8 @@ struct destruct_unit_s {
 	int lastMove;
 	unsigned int ani_frame;
 	int health;
-};
-struct destruct_shot_s {
+} destruct_unit_s;
+typedef struct destruct_shot_s {
 
 	bool isAvailable;
 
@@ -145,11 +145,11 @@ struct destruct_shot_s {
 	float xmov;
 	float ymov;
 	bool gravity;
-	enum de_shot_t shottype;
+	de_shot_t shottype;
 	//int shotdur; /* This looks to be unused */
 	unsigned int trailx[4], traily[4], trailc[4];
-};
-struct destruct_explo_s {
+} destruct_shot_s;
+typedef struct destruct_explo_s {
 
 	bool isAvailable;
 
@@ -157,56 +157,56 @@ struct destruct_explo_s {
 	unsigned int explowidth;
 	unsigned int explomax;
 	unsigned int explofill;
-	enum de_expl_t exploType;
-};
-struct destruct_moves_s {
+	de_expl_t exploType;
+} destruct_explo_s;
+typedef struct destruct_moves_s {
 	bool actions[MAX_MOVE];
-};
-struct destruct_keys_s {
+} destruct_moves_s;
+typedef struct destruct_keys_s {
 	SDL_Scancode Config[MAX_KEY][MAX_KEY_OPTIONS];
-};
-struct destruct_ai_s {
+} destruct_keys_s;
+typedef struct destruct_ai_s {
 
 	int c_Angle, c_Power, c_Fire;
 	unsigned int c_noDown;
-};
-struct destruct_player_s {
+} destruct_ai_s;
+typedef struct destruct_player_s {
 
 	bool is_cpu;
-	struct destruct_ai_s aiMemory;
+	destruct_ai_s aiMemory;
 
-	struct destruct_unit_s * unit;
-	struct destruct_moves_s moves;
-	struct destruct_keys_s  keys;
+	destruct_unit_s * unit;
+	destruct_moves_s moves;
+	destruct_keys_s  keys;
 
-	enum de_team_t team;
+	de_team_t team;
 	unsigned int unitsRemaining;
 	unsigned int unitSelected;
 	unsigned int shotDelay;
 	unsigned int score;
-};
-struct destruct_wall_s {
+} destruct_player_s;
+typedef struct destruct_wall_s {
 
 	bool wallExist;
 	unsigned int wallX, wallY;
-};
-struct destruct_world_s {
+} destruct_wall_s;
+typedef struct destruct_world_s {
 
 	/* Map data & screen pointer */
 	unsigned int baseMap[320];
 	SDL_Surface * VGAScreen;
-	struct destruct_wall_s * mapWalls;
+	destruct_wall_s * mapWalls;
 
 	/* Map configuration */
-	enum de_mode_t destructMode;
+	de_mode_t destructMode;
 	unsigned int mapFlags;
-};
+} destruct_world_s;
 
 /*** Function decs ***/
 //Prep functions
 static void JE_destructMain( void );
 static void JE_introScreen( void );
-static enum de_mode_t JE_modeSelect( void );
+static de_mode_t JE_modeSelect( void );
 static void JE_helpScreen( void );
 static void JE_pauseScreen( void );
 
@@ -215,7 +215,7 @@ static void JE_generateTerrain( void );
 static void DE_generateBaseTerrain( unsigned int, unsigned int *);
 static void DE_drawBaseTerrain( unsigned int * );
 static void DE_generateUnits( unsigned int * );
-static void DE_generateWalls( struct destruct_world_s * );
+static void DE_generateWalls( destruct_world_s * );
 static void DE_generateRings(SDL_Surface *, Uint8 );
 static void DE_ResetLevel( void );
 static unsigned int JE_placementPosition( unsigned int, unsigned int, unsigned int * );
@@ -224,10 +224,10 @@ static unsigned int JE_placementPosition( unsigned int, unsigned int, unsigned i
 static void JE_aliasDirt( SDL_Surface * );
 static void DE_RunTickDrawCrosshairs( void );
 static void DE_RunTickDrawHUD( void );
-static void DE_GravityDrawUnit( enum de_player_t, struct destruct_unit_s * );
+static void DE_GravityDrawUnit( de_player_t, destruct_unit_s * );
 static void DE_RunTickAnimate( void );
 static void DE_RunTickDrawWalls( void );
-static void DE_DrawTrails( struct destruct_shot_s *, unsigned int, unsigned int, unsigned int );
+static void DE_DrawTrails( destruct_shot_s *, unsigned int, unsigned int, unsigned int );
 static void JE_tempScreenChecking( void );
 static void JE_superPixel( unsigned int, unsigned int );
 static void JE_pixCool( unsigned int, unsigned int, Uint8 );
@@ -241,29 +241,29 @@ static void DE_ResetActions( void );
 static void DE_RunTickAI( void );
 
 //unit functions
-static void DE_RaiseAngle( struct destruct_unit_s * );
-static void DE_LowerAngle( struct destruct_unit_s * );
-static void DE_RaisePower( struct destruct_unit_s * );
-static void DE_LowerPower( struct destruct_unit_s * );
-static void DE_CycleWeaponUp( struct destruct_unit_s * );
-static void DE_CycleWeaponDown( struct destruct_unit_s * );
-static void DE_RunMagnet( enum de_player_t, struct destruct_unit_s * );
-static void DE_GravityFlyUnit( struct destruct_unit_s * );
-static void DE_GravityLowerUnit( struct destruct_unit_s * );
-static void DE_DestroyUnit( enum de_player_t, struct destruct_unit_s * );
+static void DE_RaiseAngle( destruct_unit_s * );
+static void DE_LowerAngle( destruct_unit_s * );
+static void DE_RaisePower( destruct_unit_s * );
+static void DE_LowerPower( destruct_unit_s * );
+static void DE_CycleWeaponUp( destruct_unit_s * );
+static void DE_CycleWeaponDown( destruct_unit_s * );
+static void DE_RunMagnet( de_player_t, destruct_unit_s * );
+static void DE_GravityFlyUnit( destruct_unit_s * );
+static void DE_GravityLowerUnit( destruct_unit_s * );
+static void DE_DestroyUnit( de_player_t, destruct_unit_s * );
 static void DE_ResetUnits( void );
-static inline bool DE_isValidUnit( struct destruct_unit_s *);
+static inline bool DE_isValidUnit( destruct_unit_s *);
 
 //weapon functions
 static void DE_ResetWeapons( void );
 static void DE_RunTickShots( void );
 static void DE_RunTickExplosions( void );
 static void DE_TestExplosionCollision( unsigned int, unsigned int);
-static void JE_makeExplosion( unsigned int, unsigned int, enum de_shot_t );
-static void DE_MakeShot( enum de_player_t, const struct destruct_unit_s *, int );
+static void JE_makeExplosion( unsigned int, unsigned int, de_shot_t );
+static void DE_MakeShot( de_player_t, const destruct_unit_s *, int );
 
 //gameplay functions
-static enum de_state_t DE_RunTick( void );
+static de_state_t DE_RunTick( void );
 static void DE_RunTickCycleDeadUnits( void );
 static void DE_RunTickGravity( void );
 static bool DE_RunTickCheckEndgame( void );
@@ -287,12 +287,12 @@ static const int     shotSound[MAX_SHOT_TYPES] = {S_SELECT, S_WEAPON_2, S_WEAPON
 static const int     exploSize[MAX_SHOT_TYPES] = {4, 20, 30, 14, 22, 16, 40, 60, 10, 30, 0, 5, 10, 3, 15, 7, 0};
 static const bool   shotBounce[MAX_SHOT_TYPES] = {false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, false, true};
 static const int  exploDensity[MAX_SHOT_TYPES] = {  2,  5, 10, 15, 20, 15, 25, 30, 40, 80, 0, 30, 30,  4, 30, 5, 0};
-static const enum de_expl_t shotDirt[MAX_SHOT_TYPES] = {EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_DIRT, EXPL_DIRT, EXPL_MAGNET, EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_NONE};
+static const de_expl_t shotDirt[MAX_SHOT_TYPES] = {EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_DIRT, EXPL_DIRT, EXPL_MAGNET, EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_NORMAL, EXPL_NONE};
 static const int     shotColor[MAX_SHOT_TYPES] = {16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 10, 10, 10, 10, 16, 0};
 
-static const enum de_shot_t defaultWeapon[MAX_UNITS] = {SHOT_SMALL, SHOT_MICRO,     SHOT_SMALLDIRT, SHOT_INVALID, SHOT_MAGNET, SHOT_MINILASER, SHOT_MICRO, SHOT_MINI};
-static const enum de_shot_t defaultCpuWeapon[MAX_UNITS] = {SHOT_SMALL, SHOT_MICRO,     SHOT_DEMO,      SHOT_INVALID, SHOT_MAGNET, SHOT_MINILASER, SHOT_MICRO, SHOT_MINI};
-static const enum de_shot_t defaultCpuWeaponB[MAX_UNITS] = {SHOT_DEMO,  SHOT_SMALLNUKE, SHOT_DEMO,      SHOT_INVALID, SHOT_MAGNET, SHOT_MEGALASER, SHOT_MICRO, SHOT_MINI};
+static const de_shot_t defaultWeapon[MAX_UNITS] = {SHOT_SMALL, SHOT_MICRO,     SHOT_SMALLDIRT, SHOT_INVALID, SHOT_MAGNET, SHOT_MINILASER, SHOT_MICRO, SHOT_MINI};
+static const de_shot_t defaultCpuWeapon[MAX_UNITS] = {SHOT_SMALL, SHOT_MICRO,     SHOT_DEMO,      SHOT_INVALID, SHOT_MAGNET, SHOT_MINILASER, SHOT_MICRO, SHOT_MINI};
+static const de_shot_t defaultCpuWeaponB[MAX_UNITS] = {SHOT_DEMO,  SHOT_SMALLNUKE, SHOT_DEMO,      SHOT_INVALID, SHOT_MAGNET, SHOT_MEGALASER, SHOT_MICRO, SHOT_MINI};
 static const bool      systemAngle[MAX_UNITS] = {true, true, true, false, false, true, false, false};
 static const int        baseDamage[MAX_UNITS] = {200, 120, 400, 300, 80, 150, 600, 40};
 static const bool        systemAni[MAX_UNITS] = {false, false, false, true, false, false, false, true};
@@ -373,11 +373,11 @@ static SDL_Scancode defaultKeyConfig[MAX_PLAYERS][MAX_KEY][MAX_KEY_OPTIONS] =
 static SDL_Surface *destructTempScreen;
 static JE_boolean destructFirstTime;
 
-static struct destruct_config_s config = { 40, 20, 20, 40, 10, false, false, {true, false}, {true, false} };
-static struct destruct_player_s destruct_player[MAX_PLAYERS];
-static struct destruct_world_s  world;
-static struct destruct_shot_s   * shotRec;
-static struct destruct_explo_s  * exploRec;
+static destruct_config_s config = { 40, 20, 20, 40, 10, false, false, {true, false}, {true, false} };
+static destruct_player_s destruct_player[MAX_PLAYERS];
+static destruct_world_s  world;
+static destruct_shot_s   * shotRec;
+static destruct_explo_s  * exploRec;
 
 
 static const char *const player_names[] =
@@ -397,9 +397,9 @@ static const char *const unit_names[] =
 	"magnet", "laser", "jumper", "heli",
 };
 
-static enum de_unit_t get_unit_by_name( const char *unit_name )
+static de_unit_t get_unit_by_name( const char *unit_name )
 {
-	for (enum de_unit_t unit = UNIT_FIRST; unit < MAX_UNITS; unit = (enum de_unit_t)(unit + 1))
+	for (de_unit_t unit = UNIT_FIRST; unit < MAX_UNITS; unit = (de_unit_t)(unit + 1))
 		if (strcmp(unit_name, unit_names[unit]) == 0)
 			return unit;
 	
@@ -498,7 +498,7 @@ static void load_destruct_config( Config *config_ )
 		
 		foreach_option_i_value(i, value, option)
 		{
-			enum de_unit_t unit = get_unit_by_name(value);
+			de_unit_t unit = get_unit_by_name(value);
 			if (unit != UNIT_NONE && 1 + i < COUNTOF(basetypes[8 + p]))
 			{
 				basetypes[8 + p][1 + i] = unit;
@@ -542,16 +542,16 @@ void JE_destructGame( void )
 	load_destruct_config(&opentyrian_config);
 
 	//malloc things that have customizable sizes
-	shotRec  = (struct destruct_shot_s *)malloc(sizeof(struct destruct_shot_s)  * config.max_shots);
-	exploRec = (struct destruct_explo_s *)malloc(sizeof(struct destruct_explo_s) * config.max_explosions);
-	world.mapWalls = (struct destruct_wall_s *)malloc(sizeof(struct destruct_wall_s) * config.max_walls);
+	shotRec  = (destruct_shot_s *)malloc(sizeof(destruct_shot_s)  * config.max_shots);
+	exploRec = (destruct_explo_s *)malloc(sizeof(destruct_explo_s) * config.max_explosions);
+	world.mapWalls = (destruct_wall_s *)malloc(sizeof(destruct_wall_s) * config.max_walls);
 
 	//Malloc enough structures to cover all of this session's possible needs.
 	for(i = 0; i < 10; i++) {
 		config.max_installations = MAX(config.max_installations, basetypes[i][0]);
 	}
-	destruct_player[PLAYER_LEFT ].unit = (struct destruct_unit_s *)malloc(sizeof(struct destruct_unit_s) * config.max_installations);
-	destruct_player[PLAYER_RIGHT].unit = (struct destruct_unit_s *)malloc(sizeof(struct destruct_unit_s) * config.max_installations);
+	destruct_player[PLAYER_LEFT ].unit = (destruct_unit_s *)malloc(sizeof(destruct_unit_s) * config.max_installations);
+	destruct_player[PLAYER_RIGHT].unit = (destruct_unit_s *)malloc(sizeof(destruct_unit_s) * config.max_installations);
 
 	destructTempScreen = game_screen;
 	world.VGAScreen = VGAScreen;
@@ -574,7 +574,7 @@ void JE_destructGame( void )
 
 static void JE_destructMain( void )
 {
-	enum de_state_t curState;
+	de_state_t curState;
 
 
 	JE_loadPic(VGAScreen, 11, false);
@@ -638,7 +638,7 @@ static void JE_introScreen( void )
  * The return value is the selected mode, or -1 (MODE_NONE)
  * if the user quits.
  */
-static void DrawModeSelectMenu( enum de_mode_t mode ) {
+static void DrawModeSelectMenu( de_mode_t mode ) {
 
 	int i;
 
@@ -652,9 +652,9 @@ static void DrawModeSelectMenu( enum de_mode_t mode ) {
 		JE_textShade(VGAScreen, JE_fontCenter("Custom", TINY_FONT), 82 + i * 12, "Custom", 12, (i == mode) * 4, FULL_SHADE);
 	}
 }
-static enum de_mode_t JE_modeSelect( void )
+static de_mode_t JE_modeSelect( void )
 {
-	enum de_mode_t mode;
+	de_mode_t mode;
 
 
 	memcpy(VGAScreen2->pixels, VGAScreen->pixels, VGAScreen2->h * VGAScreen2->pitch);
@@ -698,10 +698,10 @@ static enum de_mode_t JE_modeSelect( void )
 				{
 					mode = MODE_LAST;
 				} else {
-					mode = (enum de_mode_t)(MODE_LAST-1);
+					mode = (de_mode_t)(MODE_LAST-1);
 				}
 			} else {
-				mode = (enum de_mode_t)(mode - 1);
+				mode = (de_mode_t)(mode - 1);
 			}
 		}
 		if (keysactive[SDL_SCANCODE_DOWN])
@@ -710,12 +710,12 @@ static enum de_mode_t JE_modeSelect( void )
 			{
 				if (config.allow_custom == true && mode == MODE_LAST-1)
 				{
-					mode = (enum de_mode_t)(mode + 1);
+					mode = (de_mode_t)(mode + 1);
 				} else {
 					mode = MODE_FIRST;
 				}
 			} else {
-				mode = (enum de_mode_t)(mode + 1);
+				mode = (de_mode_t)(mode + 1);
 			}
 		}
 	}
@@ -864,7 +864,7 @@ static void DE_generateUnits( unsigned int * baseWorld )
 			}
 
 			destruct_player[i].unit[j].unitY = JE_placementPosition(destruct_player[i].unit[j].unitX - 1, 14, baseWorld);
-			destruct_player[i].unit[j].unitType = (enum de_unit_t)basetypes[baseLookup[i][world.destructMode]][(mt_rand() % 10) + 1];
+			destruct_player[i].unit[j].unitType = (de_unit_t)basetypes[baseLookup[i][world.destructMode]][(mt_rand() % 10) + 1];
 
 			/* Sats are special cases since they are useless.  They don't count
 			 * as active units and we can't have a team of all sats */
@@ -902,7 +902,7 @@ static void DE_generateUnits( unsigned int * baseWorld )
 		}
 	}
 }
-static void DE_generateWalls( struct destruct_world_s * gameWorld )
+static void DE_generateWalls( destruct_world_s * gameWorld )
 {
 	unsigned int i, j, wallX;
 	unsigned int wallHeight, remainWalls;
@@ -1141,7 +1141,7 @@ static void JE_tempScreenChecking( void ) /*and copy to vgascreen*/
 	}
 }
 
-static void JE_makeExplosion( unsigned int tempPosX, unsigned int tempPosY, enum de_shot_t shottype )
+static void JE_makeExplosion( unsigned int tempPosX, unsigned int tempPosY, de_shot_t shottype )
 {
 	unsigned int i, tempExploSize;
 
@@ -1378,7 +1378,7 @@ static void DE_ResetLevel( void )
 static void DE_ResetAI( void )
 {
 	unsigned int i, j;
-	struct destruct_unit_s * ptr;
+	destruct_unit_s * ptr;
 
 
 	for (i = PLAYER_LEFT; i < MAX_PLAYERS; i++)
@@ -1422,7 +1422,7 @@ static void DE_ResetActions( void )
  * Returns true while the game is running or false if the game is
  * to be terminated.
  */
-static enum de_state_t DE_RunTick( void )
+static de_state_t DE_RunTick( void )
 {
 	static unsigned int endDelay;
 
@@ -1518,7 +1518,7 @@ static enum de_state_t DE_RunTick( void )
 static void DE_RunTickCycleDeadUnits( void )
 {
 	unsigned int i;
-	struct destruct_unit_s * unit;
+	destruct_unit_s * unit;
 
 
 	/* This code automatically switches the active unit if it is destroyed
@@ -1544,7 +1544,7 @@ static void DE_RunTickCycleDeadUnits( void )
 static void DE_RunTickGravity( void )
 {
 	unsigned int i, j;
-	struct destruct_unit_s * unit;
+	destruct_unit_s * unit;
 
 
 	for (i = 0; i < MAX_PLAYERS; i++)
@@ -1575,11 +1575,11 @@ static void DE_RunTickGravity( void )
 			}
 
 		/* Draw the unit. */
-		DE_GravityDrawUnit((enum de_player_t)i, unit);
+		DE_GravityDrawUnit((de_player_t)i, unit);
 		}
 	}
 }
-static void DE_GravityDrawUnit( enum de_player_t team, struct destruct_unit_s * unit )
+static void DE_GravityDrawUnit( de_player_t team, destruct_unit_s * unit )
 {
 	unsigned int anim_index;
 
@@ -1600,7 +1600,7 @@ static void DE_GravityDrawUnit( enum de_player_t team, struct destruct_unit_s * 
 
 	blit_sprite2(VGAScreen, unit->unitX, roundf(unit->unitY) - 13, destructSpriteSheet, anim_index);
 }
-static void DE_GravityLowerUnit( struct destruct_unit_s * unit )
+static void DE_GravityLowerUnit( destruct_unit_s * unit )
 {
 	/* units fall at a constant speed.  The heli is an odd case though;
 	 * we simply give it a downward velocity, but due to a buggy implementation
@@ -1629,7 +1629,7 @@ static void DE_GravityLowerUnit( struct destruct_unit_s * unit )
 		}
 	}
 }
-static void DE_GravityFlyUnit( struct destruct_unit_s * unit )
+static void DE_GravityFlyUnit( destruct_unit_s * unit )
 {
 	if (unit->unitY + unit->unitYMov > 199) /* would hit bottom of screen */
 	{
@@ -1661,7 +1661,7 @@ static void DE_GravityFlyUnit( struct destruct_unit_s * unit )
 static void DE_RunTickAnimate( void )
 {
 	unsigned int p, u;
-	struct destruct_unit_s * ptr;
+	destruct_unit_s * ptr;
 
 
 	for (p = 0; p < MAX_PLAYERS; ++p)
@@ -1755,7 +1755,7 @@ static void DE_RunTickExplosions( void )
 static void DE_TestExplosionCollision( unsigned int PosX, unsigned int PosY)
 {
 	unsigned int i, j;
-	struct destruct_unit_s * unit;
+	destruct_unit_s * unit;
 
 
 	for (i = PLAYER_LEFT; i < MAX_PLAYERS; i++)
@@ -1770,13 +1770,13 @@ static void DE_TestExplosionCollision( unsigned int PosX, unsigned int PosY)
 				unit->health--;
 				if (unit->health <= 0)
 				{
-					DE_DestroyUnit((enum de_player_t)i, unit);
+					DE_DestroyUnit((de_player_t)i, unit);
 				}
 			}
 		}
 	}
 }
-static void DE_DestroyUnit( enum de_player_t playerID, struct destruct_unit_s * unit )
+static void DE_DestroyUnit( de_player_t playerID, destruct_unit_s * unit )
 {
 	/* This function call was an evil evil piece of brilliance before.  Go on.
 	 * Look at the older revisions.  It passed the result of a comparison.
@@ -1795,7 +1795,7 @@ static void DE_RunTickShots( void )
 	unsigned int i, j, k;
 	unsigned int tempTrails;
 	unsigned int tempPosX, tempPosY;
-	struct destruct_unit_s * unit;
+	destruct_unit_s * unit;
 
 
 	for (i = 0; i < config.max_shots; i++)
@@ -1934,7 +1934,7 @@ static void DE_RunTickShots( void )
 		}
 	}
 }
-static void DE_DrawTrails( struct destruct_shot_s * shot, unsigned int count, unsigned int decay, unsigned int startColor )
+static void DE_DrawTrails( destruct_shot_s * shot, unsigned int count, unsigned int decay, unsigned int startColor )
 {
 	int i;
 
@@ -1966,8 +1966,8 @@ static void DE_DrawTrails( struct destruct_shot_s * shot, unsigned int count, un
 static void DE_RunTickAI( void )
 {
 	unsigned int i, j;
-	struct destruct_player_s * ptrPlayer, * ptrTarget;
-	struct destruct_unit_s * ptrUnit, * ptrCurUnit;
+	destruct_player_s * ptrPlayer, * ptrTarget;
+	destruct_unit_s * ptrUnit, * ptrCurUnit;
 
 
 	for (i = 0; i < MAX_PLAYERS; i++)
@@ -2169,7 +2169,7 @@ static void DE_RunTickDrawCrosshairs( void )
 	unsigned int i;
 	int tempPosX, tempPosY;
 	int direction;
-	struct destruct_unit_s * curUnit;
+	destruct_unit_s * curUnit;
 
 
 	/* Draw the crosshairs.  Most vehicles aim left or right.  Helis can aim
@@ -2214,7 +2214,7 @@ static void DE_RunTickDrawHUD( void )
 	unsigned int i;
 	unsigned int startX;
 	char tempstr[16]; /* Max size needed: 16 assuming 10 digit int max. */
-	struct destruct_unit_s * curUnit;
+	destruct_unit_s * curUnit;
 
 
 	for (i = 0; i < MAX_PLAYERS; i++)
@@ -2281,7 +2281,7 @@ static void DE_ProcessInput( void )
 	int direction;
 
 	unsigned int player_index;
-	struct destruct_unit_s * curUnit;
+	destruct_unit_s * curUnit;
 
 
 	for (player_index = 0; player_index < MAX_PLAYERS; player_index++)
@@ -2401,12 +2401,12 @@ static void DE_ProcessInput( void )
 					break;
 
 				case EXPL_MAGNET:
-					DE_RunMagnet((enum de_player_t)player_index, curUnit);
+					DE_RunMagnet((de_player_t)player_index, curUnit);
 					break;
 
 				case EXPL_DIRT:
 				case EXPL_NORMAL:
-					DE_MakeShot((enum de_player_t)player_index, curUnit, direction);
+					DE_MakeShot((de_player_t)player_index, curUnit, direction);
 					break;
 
 				default:
@@ -2416,22 +2416,22 @@ static void DE_ProcessInput( void )
 	}
 }
 
-static void DE_CycleWeaponUp( struct destruct_unit_s * unit )
+static void DE_CycleWeaponUp( destruct_unit_s * unit )
 {
 	do
 	{
-		unit->shotType = (enum de_shot_t)(unit->shotType + 1);
+		unit->shotType = (de_shot_t)(unit->shotType + 1);
 		if (unit->shotType > SHOT_LAST)
 		{
 			unit->shotType = SHOT_FIRST;
 		}
 	} while (weaponSystems[unit->unitType][unit->shotType] == 0);
 }
-static void DE_CycleWeaponDown( struct destruct_unit_s * unit )
+static void DE_CycleWeaponDown( destruct_unit_s * unit )
 {
 	do
 	{
-		unit->shotType = (enum de_shot_t)(unit->shotType - 1);
+		unit->shotType = (de_shot_t)(unit->shotType - 1);
 		if (unit->shotType < SHOT_FIRST)
 		{
 			unit->shotType = SHOT_LAST;
@@ -2440,7 +2440,7 @@ static void DE_CycleWeaponDown( struct destruct_unit_s * unit )
 }
 
 
-static void DE_MakeShot( enum de_player_t curPlayer, const struct destruct_unit_s * curUnit, int direction )
+static void DE_MakeShot( de_player_t curPlayer, const destruct_unit_s * curUnit, int direction )
 {
 	unsigned int i;
 	unsigned int shotIndex;
@@ -2547,12 +2547,12 @@ static void DE_MakeShot( enum de_player_t curPlayer, const struct destruct_unit_
 	shotRec[shotIndex].trailc[2] = 0;
 	shotRec[shotIndex].trailc[3] = 0;
 }
-static void DE_RunMagnet( enum de_player_t curPlayer, struct destruct_unit_s * magnet )
+static void DE_RunMagnet( de_player_t curPlayer, destruct_unit_s * magnet )
 {
 	unsigned int i;
-	enum de_player_t curEnemy;
+	de_player_t curEnemy;
 	int direction;
-	struct destruct_unit_s * enemyUnit;
+	destruct_unit_s * enemyUnit;
 
 
 	curEnemy = (curPlayer == PLAYER_LEFT) ? PLAYER_RIGHT : PLAYER_LEFT;
@@ -2587,7 +2587,7 @@ static void DE_RunMagnet( enum de_player_t curPlayer, struct destruct_unit_s * m
 	}
 	magnet->ani_frame = 1;
 }
-static void DE_RaiseAngle( struct destruct_unit_s * unit )
+static void DE_RaiseAngle( destruct_unit_s * unit )
 {
 	unit->angle += 0.01f;
 	if (unit->angle > M_PI_2 - 0.01f)
@@ -2595,7 +2595,7 @@ static void DE_RaiseAngle( struct destruct_unit_s * unit )
 		unit->angle = M_PI_2 - 0.01f;
 	}
 }
-static void DE_LowerAngle( struct destruct_unit_s * unit )
+static void DE_LowerAngle( destruct_unit_s * unit )
 {
 	unit->angle -= 0.01f;
 	if (unit->angle < 0)
@@ -2603,7 +2603,7 @@ static void DE_LowerAngle( struct destruct_unit_s * unit )
 		unit->angle = 0;
 	}
 }
-static void DE_RaisePower( struct destruct_unit_s * unit )
+static void DE_RaisePower( destruct_unit_s * unit )
 {
 	unit->power += 0.05f;
 	if (unit->power > 5)
@@ -2611,7 +2611,7 @@ static void DE_RaisePower( struct destruct_unit_s * unit )
 	unit->power = 5;
 	}
 }
-static void DE_LowerPower( struct destruct_unit_s * unit )
+static void DE_LowerPower( destruct_unit_s * unit )
 {
 	unit->power -= 0.05f;
 	if (unit->power < 1)
@@ -2626,7 +2626,7 @@ static void DE_LowerPower( struct destruct_unit_s * unit )
  * otherwise.  This mainly exists because the 'health' var
  * serves two roles and that can get confusing.
  */
-static inline bool DE_isValidUnit( struct destruct_unit_s * unit )
+static inline bool DE_isValidUnit( destruct_unit_s * unit )
 {
 	return(unit->health > 0);
 }

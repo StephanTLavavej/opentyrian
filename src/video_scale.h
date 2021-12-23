@@ -25,15 +25,15 @@
 
 typedef void (*ScalerFunction)( SDL_Surface *src, SDL_Texture *dst );
 
-struct Scalers
+typedef struct Scalers
 {
 	int width, height;
 	ScalerFunction scaler16, scaler32;
 	const char *name;
-};
+} Scalers;
 
 extern uint scaler;
-extern const struct Scalers scalers[];
+extern const Scalers scalers[];
 extern const uint scalers_count;
 
 void set_scaler_by_name( const char *name );

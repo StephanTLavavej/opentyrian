@@ -202,9 +202,9 @@ JE_word totalEnemy;
 JE_word enemyKilled;
 
 /* Shape/Map Data - All in one Segment! */
-struct JE_MegaDataType1 megaData1;
-struct JE_MegaDataType2 megaData2;
-struct JE_MegaDataType3 megaData3;
+JE_MegaDataType1 megaData1;
+JE_MegaDataType2 megaData2;
+JE_MegaDataType3 megaData3;
 
 /* Secret Level Display */
 JE_byte flash;

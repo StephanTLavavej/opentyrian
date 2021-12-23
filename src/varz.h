@@ -50,7 +50,7 @@ enum
 #define MAX_REPEATING_EXPLOSIONS 20
 #define MAX_SUPERPIXELS          101
 
-struct JE_SingleEnemyType
+typedef struct JE_SingleEnemyType
 {
 	JE_integer  ex, ey;     /* POSITION */
 	JE_shortint exc, eyc;   /* CURRENT SPEED */
@@ -105,9 +105,9 @@ struct JE_SingleEnemyType
 	JE_integer  yminbounce;
 	JE_integer  ymaxbounce;
 	JE_byte     fill[3]; /* [1..3] */
-};
+} JE_SingleEnemyType;
 
-typedef struct JE_SingleEnemyType JE_MultiEnemyType[100]; /* [1..100] */
+typedef JE_SingleEnemyType JE_MultiEnemyType[100]; /* [1..100] */
 
 typedef JE_byte JE_DanCShape[24 * 28]; /* [1..(24*28) div 2] OF WORD */
 
@@ -119,16 +119,16 @@ typedef JE_byte *JE_MapType[300][14]; /* [1..300, 1..14] */
 typedef JE_byte *JE_MapType2[600][14]; /* [1..600, 1..14] */
 typedef JE_byte *JE_MapType3[600][15]; /* [1..600, 1..15] */
 
-struct JE_EventRecType
+typedef struct JE_EventRecType
 {
 	JE_word     eventtime;
 	JE_byte     eventtype;
 	JE_integer  eventdat, eventdat2;
 	JE_shortint eventdat3, eventdat5, eventdat6;
 	JE_byte     eventdat4;
-};
+} JE_EventRecType;
 
-struct JE_MegaDataType1
+typedef struct JE_MegaDataType1
 {
 	JE_MapType mainmap;
 	struct
@@ -137,9 +137,9 @@ struct JE_MegaDataType1
 	} shapes[72]; /* [0..71] */
 	JE_byte tempdat1;
 	/*JE_DanCShape filler;*/
-};
+} JE_MegaDataType1;
 
-struct JE_MegaDataType2
+typedef struct JE_MegaDataType2
 {
 	JE_MapType2 mainmap;
 	struct
@@ -149,9 +149,9 @@ struct JE_MegaDataType2
 		JE_DanCShape sh;
 	} shapes[71]; /* [0..70] */
 	JE_byte tempdat2;
-};
+} JE_MegaDataType2;
 
-struct JE_MegaDataType3
+typedef struct JE_MegaDataType3
 {
 	JE_MapType3 mainmap;
 	struct
@@ -161,7 +161,7 @@ struct JE_MegaDataType3
 		JE_DanCShape sh;
 	} shapes[70]; /* [0..69] */
 	JE_byte tempdat3;
-};
+} JE_MegaDataType3;
 
 typedef JE_byte JE_EnemyAvailType[100]; /* [1..100] */
 
@@ -239,9 +239,9 @@ extern JE_word curLoc;
 extern JE_boolean firstGameOver, gameLoaded, enemyStillExploding;
 extern JE_word totalEnemy;
 extern JE_word enemyKilled;
-extern struct JE_MegaDataType1 megaData1;
-extern struct JE_MegaDataType2 megaData2;
-extern struct JE_MegaDataType3 megaData3;
+extern JE_MegaDataType1 megaData1;
+extern JE_MegaDataType2 megaData2;
+extern JE_MegaDataType3 megaData3;
 extern JE_byte flash;
 extern JE_shortint flashChange;
 extern JE_byte displayTime;

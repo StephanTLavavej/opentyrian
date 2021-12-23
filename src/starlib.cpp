@@ -28,15 +28,15 @@
 #define starlib_MAX_STARS 1000
 #define MAX_TYPES 14
 
-struct JE_StarType
+typedef struct JE_StarType
 {
 	JE_integer spX, spY, spZ;
 	JE_integer lastX, lastY;
-};
+} JE_StarType;
 
 static int tempX, tempY;
 static JE_boolean run;
-static struct JE_StarType star[starlib_MAX_STARS];
+static JE_StarType star[starlib_MAX_STARS];
 
 static JE_byte setup;
 static JE_word stepCounter;
@@ -66,7 +66,7 @@ void JE_starlib_main( void )
 	JE_word i;
 	JE_integer tempZ;
 	JE_byte tempCol;
-	struct JE_StarType *stars;
+	JE_StarType *stars;
 	Uint8 *surf;
 
 	grayB = false;
