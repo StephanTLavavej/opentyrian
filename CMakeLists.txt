@@ -96,9 +96,6 @@ if (MSVC)
     # 4 occurrences of warning C4018: signed/unsigned mismatch
     target_compile_options(opentyrian PRIVATE /wd4018)
 
-    # 1 occurrence of warning C4210: nonstandard extension used: function given file scope
-    target_compile_options(opentyrian PRIVATE /wd4210)
-
     # 525 occurrences of warning C4244: conversion from X to Y, possible loss of data
     target_compile_options(opentyrian PRIVATE /wd4244)
 

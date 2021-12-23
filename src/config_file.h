@@ -531,12 +531,13 @@ static inline unsigned int config_get_value_count( const ConfigOption *option )
 	                  *_value = _values_begin; _value < _values_end; ++_value, (i) = _value - _values_begin) \
 	for (const char *(string_value) = config_string_to_cstr(_value); (string_value) != NULL; (string_value) = NULL)
 
+extern void config_oom( void );
+
 /*!
  * \brief Remove a value from an option during iteration.  Should be followed by \c continue.
  */
 #define foreach_remove_option_value() \
 	{ \
-		extern void config_oom( void ); \
 		unsigned int _value_i = _value - _values_begin; \
 		if (config_remove_value(_option, _value_i) == NULL) \
 			config_oom(); \
