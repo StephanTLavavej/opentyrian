@@ -114,15 +114,6 @@ void read_encrypted_pascal_string( char *s, size_t size, FILE *f )
 	s[len] = '\0';
 }
 
-void skip_pascal_string( FILE *f )
-{
-	Uint8 len;
-	char buffer[255];
-
-	fread_u8_die(&len, 1, f);
-	fread_die(buffer, 1, len, f);
-}
-
 void JE_helpBox( SDL_Surface *screen,  int x, int y, const char *message, unsigned int boxwidth )
 {
 	JE_byte startpos, endpos, pos;
