@@ -53,8 +53,8 @@ typedef float  JE_real;
 
 #define TYRIAN_VERSION "2.1"
 
-extern const char *opentyrian_str;
-extern const char *opentyrian_version;
+extern const char *const opentyrian_str;
+extern const char *const opentyrian_version;
 
 void openTyrianMenu( void );
 
