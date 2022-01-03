@@ -270,7 +270,6 @@ JE_byte     zinglonDuration;
 JE_byte     astralDuration;
 static JE_word     flareDuration;
 static JE_boolean  flareStart;
-static JE_shortint flareColChg;
 JE_byte     specialWait;
 JE_byte     nextSpecialWait;
 static JE_boolean  spraySpecial;
@@ -789,6 +788,8 @@ void JE_doSpecialShot( JE_byte playerNum, uint *armor, uint *shield )
 				}
 				filterActive = true;
 			}
+
+			JE_shortint flareColChg;
 
 			if (mt_rand() % 2 == 0)
 				flareColChg = -1;
