@@ -1128,7 +1128,7 @@ level_loop:
 
 	if (!allPlayersGone && levelEnd > 0 && endLevel)
 	{
-		play_song(9);
+		play_song(SONG_LEVELEND);
 		musicFade = false;
 	}
 	else if (!playing && firstGameOver)
@@ -3715,7 +3715,7 @@ void newSuperTyrianGame( void )
 	snprintf(buf, sizeof(buf), "%s %s", miscTextB[4], pName[0]);
 	JE_dString(VGAScreen, JE_fontCenter(buf, FONT_SHAPES), 110, buf, FONT_SHAPES);
 
-	play_song(16);
+	play_song(SONG_TUNNELING);
 	JE_playSampleNum(V_DANGER);
 
 	JE_showVGA();

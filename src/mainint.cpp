@@ -1019,7 +1019,7 @@ void JE_nextEpisode( void )
 	mainLevel = FIRST_LEVEL;
 	saveLevel = FIRST_LEVEL;
 
-	play_song(26);
+	play_song(SONG_PARLANCE);
 
 	JE_clr256(VGAScreen);
 	memcpy(colors, palettes[6-1], sizeof(colors));
@@ -2028,7 +2028,7 @@ void JE_highScoreCheck( void )
 			JE_showVGA();
 			memcpy(colors, palettes[0], sizeof(colors));
 
-			play_song(33);
+			play_song(SONG_HIGHSCORE);
 
 			{
 				/* Enter Thy name */
@@ -2104,7 +2104,7 @@ void JE_highScoreCheck( void )
 					} while (!newkey && !newmouse && !new_text);
 
 					if (!playing)
-						play_song(31);
+						play_song(SONG_ZANACS);
 
 					if (mouseButton > 0)
 					{
@@ -2503,7 +2503,7 @@ void JE_playCredits( void )
 
 	setjasondelay2(1000);
 
-	play_song(8);
+	play_song(SONG_ENDGAME2);
 
 	// load credits text
 	FILE *f = dir_fopen_die(data_dir(), "tyrian.cdt", "rb");
@@ -2634,7 +2634,7 @@ void JE_playCredits( void )
 		if (ticks == ticks_max - 1)
 		{
 			--ticks;
-			play_song(9);
+			play_song(SONG_LEVELEND);
 		}
 
 		NETWORK_KEEP_ALIVE();
@@ -2694,7 +2694,7 @@ void JE_endLevelAni( void )
 	if (!levelTimer || levelTimerCountdown > 0 || !(episodeNum == 4))
 		JE_playSampleNum(V_LEVEL_END);
 	else
-		play_song(21);
+		play_song(SONG_AGAINSAVARA);
 
 	if (bonusLevel)
 	{
@@ -4869,7 +4869,7 @@ void JE_playerCollide( Player *this_player, JE_byte playerNum_ )
 				{
 					if (!bonusLevel)
 					{
-						play_song(30);  /*Zanac*/
+						play_song(SONG_ZANAC3);
 						bonusLevel = true;
 						nextLevel = evalue - 10000;
 						enemyAvail[z] = 1;

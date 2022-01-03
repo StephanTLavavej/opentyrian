@@ -54,6 +54,7 @@
 #include "keyboard.h"
 #include "loudness.h"
 #include "mtrand.h"
+#include "musmast.h"
 #include "nortsong.h"
 #include "opentyr.h"
 #include "palette.h"
@@ -310,8 +311,24 @@ static bool weaponSystems[MAX_UNITS][MAX_SHOT_TYPES] =
 };
 
 /* More constant configuration settings. */
-/* Music that destruct will play.  You can check out musmast.c to see what is what. */
-static const JE_byte goodsel[14] /*[1..14]*/ = {1, 2, 6, 12, 13, 14, 17, 23, 24, 26, 28, 29, 32, 33};
+/* Music that destruct will play. */
+static const JE_byte destruct_music[] =
+{
+	SONG_ASTEROID2,
+	SONG_ASTEROID1,
+	SONG_DELISHOP1,
+	SONG_GRYPHONS,
+	SONG_GRYPHONE,
+	SONG_GYGESHELP,
+	SONG_TUNNELING,
+	SONG_JOURNEY1,
+	SONG_JOURNEY2,
+	SONG_START5,
+	SONG_TORM,
+	SONG_TRANSON,
+	SONG_ZANACS,
+	SONG_RETURNSAVARA
+};
 
 /* Unit creation.  Need to move this later: Doesn't belong here */
 static JE_byte basetypes[10][11] /*[1..8, 1..11]*/ = /* [0] is amount of units*/
@@ -763,7 +780,7 @@ static void JE_generateTerrain( void )
 		break;
 	}
 
-	play_song(goodsel[mt_rand() % 14] - 1);
+	play_song(destruct_music[mt_rand() % COUNTOF(destruct_music)]);
 
 	DE_generateBaseTerrain(world.mapFlags, world.baseMap);
 	DE_generateUnits(world.baseMap);
