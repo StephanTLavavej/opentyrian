@@ -29,7 +29,7 @@ const JE_byte extraCryptKey[10] = { 58, 23, 16, 192, 254, 82, 113, 147, 62, 99 }
 JE_boolean extraAvail;
 JE_ShipsType extraShips;
 void *extraShapes;
-JE_word extraShapeSize;
+static JE_word extraShapeSize;
 
 void JE_decryptShips( void )
 {

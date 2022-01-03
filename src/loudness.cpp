@@ -26,23 +26,23 @@
 
 #include <stdlib.h>
 
-float music_volume = 0, sample_volume = 0;
+static float music_volume = 0, sample_volume = 0;
 
-bool music_stopped = true;
+static bool music_stopped = true;
 unsigned int song_playing = 0;
 
 bool audio_disabled = false, music_disabled = false, samples_disabled = false;
 
 /* SYN: These shouldn't be used outside this file. Hands off! */
-FILE *music_file = NULL;
-Uint32 *song_offset;
-Uint16 song_count = 0;
+static FILE *music_file = NULL;
+static Uint32 *song_offset;
+static Uint16 song_count = 0;
 
 
-SAMPLE_TYPE *channel_buffer[SFX_CHANNELS] = { NULL };
-SAMPLE_TYPE *channel_pos[SFX_CHANNELS] = { NULL };
-Uint32 channel_len[SFX_CHANNELS] = { 0 };
-Uint8 channel_vol[SFX_CHANNELS];
+static SAMPLE_TYPE *channel_buffer[SFX_CHANNELS] = { NULL };
+static SAMPLE_TYPE *channel_pos[SFX_CHANNELS] = { NULL };
+static Uint32 channel_len[SFX_CHANNELS] = { 0 };
+static Uint8 channel_vol[SFX_CHANNELS];
 
 static SDL_AudioDeviceID audio_device = 0;
 

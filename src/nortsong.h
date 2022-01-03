@@ -26,8 +26,6 @@
 
 #include "SDL.h"
 
-extern Uint32 target, target2;
-
 extern JE_word frameCountMax;
 
 extern JE_byte *digiFx[SAMPLE_COUNT];

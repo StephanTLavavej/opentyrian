@@ -193,7 +193,7 @@ char    lastLevelName[11], levelName[11]; /* string [10] */
 JE_byte mainLevel, nextLevel, saveLevel;   /*Current Level #*/
 
 /* Keyboard Junk */
-DosKeySettings dosKeySettings;
+static DosKeySettings dosKeySettings;
 KeySettings keySettings;
 
 /* Configuration */
@@ -229,8 +229,8 @@ JE_boolean explosionTransparent,
            background2notTransparent;
 
 JE_byte soundEffects; // dummy value for config
-JE_byte versionNum;   /* SW 1.0 and SW/Reg 1.1 = 0 or 1
-                       * EA 1.2 = 2 */
+static JE_byte versionNum;   /* SW 1.0 and SW/Reg 1.1 = 0 or 1
+                              * EA 1.2 = 2 */
 
 JE_byte    fastPlay;
 JE_boolean pentiumMode;

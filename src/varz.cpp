@@ -261,19 +261,19 @@ JE_word enemyOnScreen;
 JE_word superEnemy254Jump;
 
 /*EnemyShotData*/
-JE_boolean fireButtonHeld;
+static JE_boolean fireButtonHeld;
 JE_boolean enemyShotAvail[ENEMY_SHOT_MAX]; /* [1..Enemyshotmax] */
 EnemyShotType enemyShot[ENEMY_SHOT_MAX]; /* [1..Enemyshotmax]  */
 
 /* Player Shot Data */
 JE_byte     zinglonDuration;
 JE_byte     astralDuration;
-JE_word     flareDuration;
-JE_boolean  flareStart;
-JE_shortint flareColChg;
+static JE_word     flareDuration;
+static JE_boolean  flareStart;
+static JE_shortint flareColChg;
 JE_byte     specialWait;
 JE_byte     nextSpecialWait;
-JE_boolean  spraySpecial;
+static JE_boolean  spraySpecial;
 JE_byte     doIced;
 JE_boolean  infiniteShot;
 
@@ -317,9 +317,9 @@ JE_integer b;
 JE_byte **BKwrap1to, **BKwrap2to, **BKwrap3to,
         **BKwrap1, **BKwrap2, **BKwrap3;
 
-JE_shortint specialWeaponFilter, specialWeaponFreq;
-JE_word     specialWeaponWpn;
-JE_boolean  linkToPlayer;
+static JE_shortint specialWeaponFilter, specialWeaponFreq;
+static JE_word     specialWeaponWpn;
+static JE_boolean  linkToPlayer;
 
 JE_word shipGr, shipGr2;
 Sprite2_array *shipGrPtr, *shipGr2ptr;

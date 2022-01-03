@@ -30,7 +30,7 @@
 
 #include "SDL.h"
 
-Uint32 target, target2;
+static Uint32 target, target2;
 
 JE_word frameCountMax;
 

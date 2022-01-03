@@ -56,15 +56,16 @@
 
 inline static void blit_enemy( SDL_Surface *surface, unsigned int i, signed int x_offset, signed int y_offset, signed int sprite_offset );
 
-boss_bar_t boss_bar[2];
+static boss_bar_t boss_bar[2];
 
 /* Level Event Data */
-JE_boolean quit, loadLevelOk;
+JE_boolean quit;
+static JE_boolean loadLevelOk;
 
-JE_EventRecType eventRec[EVENT_MAXIMUM]; /* [1..eventMaximum] */
-JE_word levelEnemyMax;
-JE_word levelEnemyFrequency;
-JE_word levelEnemy[40]; /* [1..40] */
+static JE_EventRecType eventRec[EVENT_MAXIMUM]; /* [1..eventMaximum] */
+static JE_word levelEnemyMax;
+static JE_word levelEnemyFrequency;
+static JE_word levelEnemy[40]; /* [1..40] */
 
 char tempStr[31];
 

@@ -34,8 +34,6 @@ typedef struct
 }
 boss_bar_t;
 
-extern boss_bar_t boss_bar[2];
-
 extern char tempStr[31];
 extern JE_byte itemAvail[9][10], itemAvailMax[9];
 

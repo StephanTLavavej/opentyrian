@@ -37,8 +37,6 @@
 #define SAMPLE_TYPE Bit16s
 #define BYTES_PER_SAMPLE 2
 
-extern float music_volume, sample_volume;
-
 extern unsigned int song_playing;
 
 extern bool audio_disabled, music_disabled, samples_disabled;
