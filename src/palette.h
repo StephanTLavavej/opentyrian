@@ -26,7 +26,6 @@
 typedef SDL_Color Palette[256];
 
 extern Palette palettes[];
-extern int palette_count;
 
 extern Uint32 rgb_palette[256], yuv_palette[256];
 
