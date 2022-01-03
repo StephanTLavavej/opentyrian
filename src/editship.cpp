@@ -31,7 +31,7 @@ JE_ShipsType extraShips;
 void *extraShapes;
 static JE_word extraShapeSize;
 
-void JE_decryptShips( void )
+static void JE_decryptShips( void )
 {
 	JE_boolean correct = true;
 	JE_ShipsType s2;

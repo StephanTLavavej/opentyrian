@@ -28,7 +28,6 @@ extern JE_boolean extraAvail;
 extern JE_ShipsType extraShips;
 extern void *extraShapes;
 
-void JE_decryptShips( void );
 void JE_loadExtraShapes( void );
 
 #endif /* EDITSHIP_H */
