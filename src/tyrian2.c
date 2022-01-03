@@ -150,7 +150,6 @@ void JE_starShowVGA( void )
 		JE_showVGA();
 	}
 
-	quitRequested = false;
 	skipStarShowVGA = false;
 }
 
@@ -850,7 +849,6 @@ start_level_first:
 	starActive = true;
 	enemyContinualDamage = false;
 	levelEnemyFrequency = 96;
-	quitRequested = false;
 
 	for (unsigned int i = 0; i < COUNTOF(boss_bar); i++)
 		boss_bar[i].link_num = 0;
