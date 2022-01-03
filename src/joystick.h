@@ -67,7 +67,6 @@ typedef struct
 }
 Joystick;
 
-extern int joystick_repeat_delay;
 extern bool joydown;
 extern bool ignore_joystick;
 extern int joysticks;
