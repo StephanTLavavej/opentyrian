@@ -789,24 +789,24 @@ void JE_doSpecialShot( JE_byte playerNum, uint *armor, uint *shield )
 				filterActive = true;
 			}
 
-			JE_shortint flareColChg;
-
-			if (mt_rand() % 2 == 0)
-				flareColChg = -1;
-			else
-				flareColChg = 1;
-
 			if (levelFilter == 7)
 			{
 				if (levelBrightness < -6)
 				{
-					flareColChg = 1;
+					++levelBrightness;
 				}
-				if (levelBrightness > 6)
+				else if (levelBrightness > 6)
 				{
-					flareColChg = -1;
+					--levelBrightness;
 				}
-				levelBrightness += flareColChg;
+				else if (mt_rand() % 2 == 0)
+				{
+					--levelBrightness;
+				}
+				else
+				{
+					++levelBrightness;
+				}
 			}
 		}
 
