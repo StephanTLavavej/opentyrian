@@ -31,7 +31,7 @@
 /* These are necessary because the size of the structure has changed from the original, but we
    need to know the original sizes in order to find things in TYRIAN.SAV */
 #define SAVE_FILES_SIZE 2398
-#define SIZEOF_SAVEGAMETEMP SAVE_FILES_SIZE + 4 + 100
+#define SIZEOF_SAVEGAMETEMP (SAVE_FILES_SIZE + 4 + 100)
 #define SAVE_FILE_SIZE (SIZEOF_SAVEGAMETEMP - 4)
 
 /*#define SAVE_FILES_SIZE (2502 - 4)
