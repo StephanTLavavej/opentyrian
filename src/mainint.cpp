@@ -2688,7 +2688,7 @@ void JE_endLevelAni( void )
 	frameCountMax = 4;
 	textGlowFont = SMALL_FONT_SHAPES;
 
-	SDL_Color white = { 255, 255, 255 };
+	const SDL_Color white = { 255, 255, 255 };
 	set_colors(white, 254, 254);
 
 	if (!levelTimer || levelTimerCountdown > 0 || !(episodeNum == 4))
