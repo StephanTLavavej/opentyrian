@@ -601,7 +601,7 @@ enemy_still_exists:
 						do
 							temp = mt_rand() % 8;
 						while (temp == 3);
-						soundQueue[temp] = randomEnemyLaunchSounds[(mt_rand() % 3)];
+						soundQueue[temp] = randomEnemyLaunchSounds[mt_rand() % COUNTOF(randomEnemyLaunchSounds)];
 
 						if (enemy[i].launchspecial == 1
 						    && enemy[i].linknum < 100)
@@ -4712,7 +4712,7 @@ void JE_eventSystem( void )
 				}
 			}
 			if (eventRec[eventLoc-1].eventdat == 534 && superTyrian)
-				eventRec[eventLoc-1].eventdat = 828 + superTyrianSpecials[mt_rand() % 4];
+				eventRec[eventLoc-1].eventdat = 828 + superTyrianSpecials[mt_rand() % COUNTOF(superTyrianSpecials)];
 
 			for (temp = 0; temp < 100; temp++)
 			{
