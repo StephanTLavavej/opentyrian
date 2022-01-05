@@ -143,9 +143,6 @@ if (MSVC)
     # 1 occurrence of warning C6297: Arithmetic overflow: 32-bit value is shifted, then cast to 64-bit value. Results might not be an expected value.
     target_compile_options(opentyrian PRIVATE /wd6297)
 
-    # 1 occurrence of warning C6326: Potential comparison of a constant with another constant
-    target_compile_options(opentyrian PRIVATE /wd6326)
-
     # 29 occurrences of warning C6340: Mismatch on sign: X passed as _Param_(N) when some signed type is required in call to Y
     # Need to report an issue to Visual Studio Developer Community: This warning doesn't consider integer promotions.
     target_compile_options(opentyrian PRIVATE /wd6340)
