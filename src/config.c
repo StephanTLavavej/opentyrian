@@ -277,9 +277,9 @@ bool load_opentyrian_config( void )
 		if (config_get_string_option(section, "scaler", &scaler_name))
 			set_scaler_by_name(scaler_name);
 		
-		const char *scaling_mode;
-		if (config_get_string_option(section, "scaling_mode", &scaling_mode))
-			set_scaling_mode_by_name(scaling_mode);
+		const char *scaling_mode_name;
+		if (config_get_string_option(section, "scaling_mode", &scaling_mode_name))
+			set_scaling_mode_by_name(scaling_mode_name);
 	}
 
 	section = config_find_section(config, "keyboard", NULL);
