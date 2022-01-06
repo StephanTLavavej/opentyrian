@@ -273,9 +273,9 @@ bool load_opentyrian_config( void )
 	{
 		config_get_int_option(section, "fullscreen", &fullscreen_display);
 		
-		const char *scaler;
-		if (config_get_string_option(section, "scaler", &scaler))
-			set_scaler_by_name(scaler);
+		const char *scaler_name;
+		if (config_get_string_option(section, "scaler", &scaler_name))
+			set_scaler_by_name(scaler_name);
 		
 		const char *scaling_mode;
 		if (config_get_string_option(section, "scaling_mode", &scaling_mode))
