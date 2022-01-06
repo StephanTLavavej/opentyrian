@@ -40,7 +40,6 @@ void hq2x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture );
 void hq3x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture );
 void hq4x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture );
 
-static int   YUV1, YUV2;
 const  int   Ymask = 0x00FF0000;
 const  int   Umask = 0x0000FF00;
 const  int   Vmask = 0x000000FF;
@@ -121,8 +120,8 @@ inline void interp10(Uint32 *pc, Uint32 c1, Uint32 c2, Uint32 c3)
 
 inline bool diff(unsigned int w1, unsigned int w2)
 {
-	Uint32 YUV1 = yuv_palette[w1];
-	Uint32 YUV2 = yuv_palette[w2];
+	const Uint32 YUV1 = yuv_palette[w1];
+	const Uint32 YUV2 = yuv_palette[w2];
 	return ( ( abs((int)(YUV1 & Ymask) - (int)(YUV2 & Ymask)) > trY ) ||
 	         ( abs((int)(YUV1 & Umask) - (int)(YUV2 & Umask)) > trU ) ||
 	         ( abs((int)(YUV1 & Vmask) - (int)(YUV2 & Vmask)) > trV ) );
@@ -249,7 +248,7 @@ void hq2x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture )
 			int pattern = 0;
 			int flag = 1;
 			
-			YUV1 = yuv_palette[w[5]];
+			const int YUV1 = yuv_palette[w[5]];
 			
 			for (int k=1; k<=9; k++)
 			{
@@ -257,7 +256,7 @@ void hq2x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture )
 				
 				if ( w[k] != w[5] )
 				{
-					YUV2 = yuv_palette[w[k]];
+					const int YUV2 = yuv_palette[w[k]];
 					if ( ( abs((YUV1 & Ymask) - (YUV2 & Ymask)) > trY ) ||
 					     ( abs((YUV1 & Umask) - (YUV2 & Umask)) > trU ) ||
 					     ( abs((YUV1 & Vmask) - (YUV2 & Vmask)) > trV ) )
@@ -3049,7 +3048,7 @@ void hq3x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture )
 			int pattern = 0;
 			int flag = 1;
 			
-			YUV1 = yuv_palette[w[5]];
+			const int YUV1 = yuv_palette[w[5]];
 			
 			for (int k=1; k<=9; k++)
 			{
@@ -3057,7 +3056,7 @@ void hq3x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture )
 				
 				if ( w[k] != w[5] )
 				{
-					YUV2 = yuv_palette[w[k]];
+					const int YUV2 = yuv_palette[w[k]];
 					if ( ( abs((YUV1 & Ymask) - (YUV2 & Ymask)) > trY ) ||
 					     ( abs((YUV1 & Umask) - (YUV2 & Umask)) > trU ) ||
 					     ( abs((YUV1 & Vmask) - (YUV2 & Vmask)) > trV ) )
@@ -6909,7 +6908,7 @@ void hq4x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture )
 			int pattern = 0;
 			int flag = 1;
 			
-			YUV1 = yuv_palette[w[5]];
+			const int YUV1 = yuv_palette[w[5]];
 			
 			for (int k=1; k<=9; k++)
 			{
@@ -6917,7 +6916,7 @@ void hq4x_32( SDL_Surface *src_surface, SDL_Texture *dst_texture )
 				
 				if ( w[k] != w[5] )
 				{
-					YUV2 = yuv_palette[w[k]];
+					const int YUV2 = yuv_palette[w[k]];
 					if ( ( abs((YUV1 & Ymask) - (YUV2 & Ymask)) > trY ) ||
 					     ( abs((YUV1 & Umask) - (YUV2 & Umask)) > trU ) ||
 					     ( abs((YUV1 & Vmask) - (YUV2 & Vmask)) > trV ) )
