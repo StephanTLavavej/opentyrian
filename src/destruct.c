@@ -1054,7 +1054,7 @@ static void JE_aliasDirt( SDL_Surface * screen )
 	}
 }
 
-static unsigned int JE_placementPosition( unsigned int passed_x, unsigned int width, unsigned int * world )
+static unsigned int JE_placementPosition( unsigned int passed_x, unsigned int width, unsigned int * baseWorld )
 {
 	unsigned int i, new_y;
 
@@ -1069,13 +1069,13 @@ static unsigned int JE_placementPosition( unsigned int passed_x, unsigned int wi
 	new_y = 0;
 	for (i = passed_x; i <= passed_x + width - 1; i++)
 	{
-		if (new_y < world[i])
-			new_y = world[i];
+		if (new_y < baseWorld[i])
+			new_y = baseWorld[i];
 	}
 
 	for (i = passed_x; i <= passed_x + width - 1; i++)
 	{
-		world[i] = new_y;
+		baseWorld[i] = new_y;
 	}
 
 	return new_y;
