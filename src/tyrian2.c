@@ -5207,24 +5207,24 @@ static void JE_barX( JE_word x1, JE_word y1, JE_word x2, JE_word y2, JE_byte col
 
 void draw_boss_bar( void )
 {
-	for (unsigned int b = 0; b < COUNTOF(boss_bar); b++)
+	for (unsigned int bar_idx = 0; bar_idx < COUNTOF(boss_bar); bar_idx++)
 	{
-		if (boss_bar[b].link_num == 0)
+		if (boss_bar[bar_idx].link_num == 0)
 			continue;
 
 		unsigned int armor = 256;  // higher than armor max
 
 		for (unsigned int e = 0; e < COUNTOF(enemy); e++)  // find most damaged
 		{
-			if (enemyAvail[e] != 1 && enemy[e].linknum == boss_bar[b].link_num)
+			if (enemyAvail[e] != 1 && enemy[e].linknum == boss_bar[bar_idx].link_num)
 				if (enemy[e].armorleft < armor)
 					armor = enemy[e].armorleft;
 		}
 
 		if (armor > 255 || armor == 0)  // boss dead?
-			boss_bar[b].link_num = 0;
+			boss_bar[bar_idx].link_num = 0;
 		else
-			boss_bar[b].armor = (armor == 255) ? 254 : armor;  // 255 would make the bar too long
+			boss_bar[bar_idx].armor = (armor == 255) ? 254 : armor;  // 255 would make the bar too long
 	}
 
 	unsigned int bars = (boss_bar[0].link_num != 0 ? 1 : 0)
@@ -5237,17 +5237,17 @@ void draw_boss_bar( void )
 		boss_bar[1].link_num = 0;
 	}
 
-	for (unsigned int b = 0; b < bars; b++)
+	for (unsigned int bar_idx = 0; bar_idx < bars; bar_idx++)
 	{
 		unsigned int x = (bars == 2)
-		               ? ((b == 0) ? 125 : 185)
+		               ? ((bar_idx == 0) ? 125 : 185)
 		               : ((levelTimer) ? 250 : 155);  // level timer and boss bar would overlap
 
 		JE_barX(x - 25, 7, x + 25, 12, 115);
-		JE_barX(x - (boss_bar[b].armor / 10), 7, x + (boss_bar[b].armor + 5) / 10, 12, 118 + boss_bar[b].color);
+		JE_barX(x - (boss_bar[bar_idx].armor / 10), 7, x + (boss_bar[bar_idx].armor + 5) / 10, 12, 118 + boss_bar[bar_idx].color);
 
-		if (boss_bar[b].color > 0)
-			boss_bar[b].color--;
+		if (boss_bar[bar_idx].color > 0)
+			boss_bar[bar_idx].color--;
 	}
 }
 

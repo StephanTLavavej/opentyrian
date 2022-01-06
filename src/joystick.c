@@ -626,23 +626,23 @@ bool detect_joystick_assignment( int j, Joystick_assignment *assignment )
 }
 
 // compares relevant parts of joystick assignments for equality
-bool joystick_assignment_cmp( const Joystick_assignment *a, const Joystick_assignment *b )
+bool joystick_assignment_cmp( const Joystick_assignment *joy1, const Joystick_assignment *joy2 )
 {
-	if (a->type == b->type)
+	if (joy1->type == joy2->type)
 	{
-		switch (a->type)
+		switch (joy1->type)
 		{
 		case NONE:
 			return true;
 		case AXIS:
-			return (a->num == b->num) &&
-			       (a->negative_axis == b->negative_axis);
+			return (joy1->num == joy2->num) &&
+			       (joy1->negative_axis == joy2->negative_axis);
 		case BUTTON:
-			return (a->num == b->num);
+			return (joy1->num == joy2->num);
 		case HAT:
-			return (a->num == b->num) &&
-			       (a->x_axis == b->x_axis) &&
-			       (a->negative_axis == b->negative_axis);
+			return (joy1->num == joy2->num) &&
+			       (joy1->x_axis == joy2->x_axis) &&
+			       (joy1->negative_axis == joy2->negative_axis);
 		}
 	}
 	
