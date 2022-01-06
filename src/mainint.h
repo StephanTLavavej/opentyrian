@@ -61,7 +61,7 @@ bool replay_demo_keys( void );
 void JE_SFCodes( JE_byte playerNum_, JE_integer PX_, JE_integer PY_, JE_integer mouseX_, JE_integer mouseY_ );
 void JE_sort( void );
 
-long weapon_upgrade_cost( long base_cost, unsigned int power );
+long weapon_upgrade_cost( long base_cost, unsigned int weapon_power );
 ulong JE_getCost( JE_byte itemType, JE_word itemNum );
 JE_longint JE_getValue( JE_byte itemType, JE_word itemNum );
 ulong JE_totalScore( const Player * );

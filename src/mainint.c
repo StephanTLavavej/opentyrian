@@ -577,16 +577,16 @@ static bool helpSystemPage( Uint8 *topic, bool *restart )
 	}
 }
 
-// cost to upgrade a weapon power from power-1 (where power == 0 indicates an unupgraded weapon)
-long weapon_upgrade_cost( long base_cost, unsigned int power )
+// cost to upgrade to weapon_power from weapon_power-1 (where weapon_power == 0 indicates an unupgraded weapon)
+long weapon_upgrade_cost( long base_cost, unsigned int weapon_power )
 {
-	assert(power <= 11);
+	assert(weapon_power <= 11);
 
 	unsigned int temp = 0;
 
-	// 0 1 3 6 10 15 21 29 ...
-	for (; power > 0; power--)
-		temp += power;
+	// 0 1 3 6 10 15 21 28 36 45 55 66
+	for (; weapon_power > 0; weapon_power--)
+		temp += weapon_power;
 
 	return base_cost * temp;
 }
