@@ -2650,7 +2650,7 @@ static bool DE_RunTickCheckEndgame( void )
 }
 static void DE_RunTickPlaySounds( void )
 {
-	unsigned int i, tempSampleIndex, tempVolume;
+	unsigned int i, tempSampleIndex, vol;
 
 
 	for (i = 0; i < COUNTOF(soundQueue); i++)
@@ -2660,14 +2660,14 @@ static void DE_RunTickPlaySounds( void )
 			tempSampleIndex = soundQueue[i];
 			if (i == 7)
 			{
-				tempVolume = fxPlayVol;
+				vol = fxPlayVol;
 			}
 			else
 			{
-				tempVolume = fxPlayVol / 2;
+				vol = fxPlayVol / 2;
 			}
 
-			JE_multiSamplePlay(digiFx[tempSampleIndex-1], fxSize[tempSampleIndex-1], i, tempVolume);
+			JE_multiSamplePlay(digiFx[tempSampleIndex-1], fxSize[tempSampleIndex-1], i, vol);
 			soundQueue[i] = S_NONE;
 		}
 	}
