@@ -3404,7 +3404,7 @@ void JE_pauseGame( void )
 }
 
 void JE_playerMovement( Player *this_player,
-                        JE_byte inputDevice,
+                        JE_byte inputDevice_,
                         JE_byte playerNum_,
                         JE_word shipGr_,
                         Sprite2_array *shipGrPtr_,
@@ -3433,7 +3433,7 @@ redo:
 
 	if (isNetworkGame)
 	{
-		inputDevice = 0;
+		inputDevice_ = 0;
 	}
 
 	mouseXC = 0;
@@ -3574,7 +3574,7 @@ redo:
 			else
 			{
 				if (record_demo || play_demo)
-					inputDevice = 1;  // keyboard is required device for demo recording
+					inputDevice_ = 1;  // keyboard is required device for demo recording
 
 				// demo playback input
 				if (play_demo)
@@ -3587,10 +3587,10 @@ redo:
 				}
 
 				/* joystick input */
-				if ((inputDevice == 0 || inputDevice >= 3) && joysticks > 0)
+				if ((inputDevice_ == 0 || inputDevice_ >= 3) && joysticks > 0)
 				{
-					int j = inputDevice  == 0 ? 0 : inputDevice - 3;
-					int j_max = inputDevice == 0 ? joysticks : inputDevice - 3 + 1;
+					int j = inputDevice_  == 0 ? 0 : inputDevice_ - 3;
+					int j_max = inputDevice_ == 0 ? joysticks : inputDevice_ - 3 + 1;
 					for (; j < j_max; j++)
 					{
 						poll_joystick(j);
@@ -3621,7 +3621,7 @@ redo:
 				service_SDL_events(false);
 
 				/* mouse input */
-				if ((inputDevice == 0 || inputDevice == 2) && has_mouse)
+				if ((inputDevice_ == 0 || inputDevice_ == 2) && has_mouse)
 				{
 					button[0] |= mouse_pressed[0];
 					button[1] |= mouse_pressed[1];
@@ -3635,7 +3635,7 @@ redo:
 				}
 
 				/* keyboard input */
-				if ((inputDevice == 0 || inputDevice == 1) && !play_demo)
+				if ((inputDevice_ == 0 || inputDevice_ == 1) && !play_demo)
 				{
 					if (keysactive[keySettings[KEY_SETTING_UP]])
 						this_player->y -= CURRENT_KEY_SPEED;
