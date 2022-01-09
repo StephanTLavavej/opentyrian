@@ -37,7 +37,7 @@ extern JE_byte smoothie_data[9];
 
 extern int starfield_speed;
 
-void JE_darkenBackground( JE_word neat );
+void JE_darkenBackground( JE_word neat_detail );
 
 void blit_background_row( SDL_Surface *surface, int x, int y, Uint8 **map );
 void blit_background_row_blend( SDL_Surface *surface, int x, int y, Uint8 **map );

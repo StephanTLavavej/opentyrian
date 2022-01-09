@@ -43,7 +43,7 @@ JE_byte map1YDelay, map1YDelayMax, map2YDelay, map2YDelayMax;
 JE_boolean  anySmoothies;
 JE_byte     smoothie_data[9]; /* [1..9] */
 
-void JE_darkenBackground( JE_word neat )  /* wild detail level */
+void JE_darkenBackground( JE_word neat_detail )  /* wild detail level */
 {
 	Uint8 *s = VGAScreen->pixels; /* screen pointer, 8-bit specific */
 	int x, y;
@@ -54,7 +54,7 @@ void JE_darkenBackground( JE_word neat )  /* wild detail level */
 	{
 		for (x = 264; x; x--)
 		{
-			*s = ((((*s & 0x0f) << 4) - (*s & 0x0f) + ((((x - neat - y) >> 2) + *(s-2) + (y == 184 ? 0 : *(s-(VGAScreen->pitch-1)))) & 0x0f)) >> 4) | (*s & 0xf0);
+			*s = ((((*s & 0x0f) << 4) - (*s & 0x0f) + ((((x - neat_detail - y) >> 2) + *(s-2) + (y == 184 ? 0 : *(s-(VGAScreen->pitch-1)))) & 0x0f)) >> 4) | (*s & 0xf0);
 			s++;
 		}
 		s += VGAScreen->pitch - 264;
