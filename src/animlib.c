@@ -155,7 +155,7 @@ int JE_renderFrame( unsigned int framenumber )
 	return (JE_playRunSkipDump(CurrentPageBuffer + offset + 4, CurrentPageRecordSizes[destframe] - 4));
 }
 
-void JE_playAnim( const char *animfile, JE_byte startingframe, JE_byte speed )
+void JE_playAnim( const char *animfile, JE_byte startingframe, JE_byte anim_speed )
 {
 	unsigned int i;
 	int pageNum;
@@ -179,7 +179,7 @@ void JE_playAnim( const char *animfile, JE_byte startingframe, JE_byte speed )
     for (i = startingframe; i < FileHeader.nRecords-1; i++)
     {
     	/* Handle boring crap */
-    	setjasondelay(speed);
+    	setjasondelay(anim_speed);
 
 		/* Load required frame.  The loading function is smart enough to not re-load an already loaded frame */
 		pageNum = JE_findPage(i);
