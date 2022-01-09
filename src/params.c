@@ -42,7 +42,7 @@ const char pars[][9] = {
 
 void JE_paramCheck( int argc, char *argv[] )
 {
-	const Options options[] =
+	const Options cmd_options[] =
 	{
 		{ 'h', 'h', "help",              false },
 		
@@ -71,7 +71,7 @@ void JE_paramCheck( int argc, char *argv[] )
 	
 	for (; ; )
 	{
-		option = parse_args(argc, (const char **)argv, options);
+		option = parse_args(argc, (const char **)argv, cmd_options);
 		
 		if (option.value == NOT_OPTION)
 			break;
