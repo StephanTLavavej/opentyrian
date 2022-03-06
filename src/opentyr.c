@@ -138,7 +138,8 @@ void openTyrianMenu( void )
 	} Menu;
 
 	static const Menu menus[] = {
-		[MENU_OPENTYRIAN] = {
+		{},
+		{
 			.header = "OpenTyrian",
 			.items = {
 				{ MENU_ITEM_GRAPHICS, "Graphics...", "Change the graphics settings." },
@@ -149,7 +150,7 @@ void openTyrianMenu( void )
 				{ (MenuItemId)-1 }
 			},
 		},
-		[MENU_GRAPHICS] = {
+		{
 			.header = "Graphics",
 			.items = {
 				{ MENU_ITEM_DISPLAY, "Display:", "Change the display mode.", getDisplayPickerItemsCount, getDisplayPickerItem },
@@ -159,7 +160,7 @@ void openTyrianMenu( void )
 				{ (MenuItemId)-1 }
 			},
 		},
-		[MENU_SOUND] = {
+		{
 			.header = "Sound",
 			.items = {
 				{ MENU_ITEM_MUSIC_VOLUME, "Music Volume", "Change volume with the left/right arrow keys." },
