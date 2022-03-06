@@ -3506,7 +3506,8 @@ bool titleScreen( void )
 							JE_playSampleNum(V_DATA_CUBE);
 
 							JE_whoa();
-							set_colors((SDL_Color) { 0, 0, 0 }, 0, 255);
+							const SDL_Color black = { 0, 0, 0 };
+							set_colors(black, 0, 255);
 
 							newSuperTyrianGame();
 							return true;
